@@ -55,62 +55,7 @@ class _Pagetwo extends State<Pagetwo>{
             crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
             // Generate 100 Widgets that display their index in the List
             children: List.generate(sample_ls.length, (index) {
-              // return Container(
-              //         //color: Colors.transparent,
-              //         //height: 170.0,
-              //         width: 195.0,
-              //         decoration: new BoxDecoration(
-              //           //borderRadius: new BorderRadius.circular(30.0),
-              //         ),
               return _cardBoard(context, index);
-                      // return Card(
-                      //     elevation: 0.0,
-                      //     //color: Color(getColorHexFromStr("#C5B7E8")),
-                      //     shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(10.0),
-                      //     ),
-                      //     child: Column(
-                      //       children: <Widget>[
-                      //         SizedBox(height: 14.0),
-                      //         Container(
-                      //           height: 120.0,
-                      //           width: 180.0,
-                      //           decoration: new BoxDecoration(
-                      //             borderRadius: new BorderRadius.circular(10.0),
-                      //             border: Border.all(
-                      //                 width: 10, //
-                      //                 color: Color(getColorHexFromStr("#D7D7D7"))
-                      //             ),
-                      //             image: DecorationImage(
-                      //               image: new AssetImage("assets/board1.png"),
-                      //               fit: BoxFit.fill,
-                      //             ),
-                      //             shape: BoxShape.rectangle,
-                      //           ),
-                      //         ),
-                      //         //SizedBox(height: 10.0),
-                      //         new ListTile(
-                      //           dense: true,
-                      //           title: Text("Physics 23/1/19 08:51",
-                      //             style: TextStyle(
-                      //               color: Color(getColorHexFromStr("#606060")),
-                      //               fontSize: 10.0,
-                      //               fontFamily: 'QuickSand',
-                      //               fontWeight: FontWeight.bold,
-                      //             ),
-                      //           ),
-                      //           trailing: Icon(Icons.more_vert, color: Colors.grey),
-                      //         ),
-                      //       ],
-                      //     )
-                      // );
-                    //);
-              // return Center(
-              //   child: Text(
-              //     'Item $index',
-              //     style: Theme.of(context).textTheme.headline,
-              //   ),
-              // );
             }),
           );
         },
