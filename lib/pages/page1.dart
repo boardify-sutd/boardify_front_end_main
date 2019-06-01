@@ -54,38 +54,7 @@ class _Pageone extends State<Pageone>{
         //padding: EdgeInsets.only(top:80.0),
         children: <Widget>[
           SizedBox(height: 10.0),
-          Row(
-            children: <Widget>[
-              SizedBox(width: 30.0),
-              Text(
-                "My Classes",
-                style: TextStyle(
-                  color: Color(getColorHexFromStr("#606060")),
-                  fontSize: 23.0,
-                  fontFamily: 'QuickSand',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(width:130.0),
-              FlatButton(
-                  color: Colors.transparent,
-                  onPressed: null,
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        "See All",
-                        style: TextStyle(
-                          color: Color(getColorHexFromStr("#606060")),
-                          fontSize: 15.0,
-                          fontFamily: 'QuickSand',
-                        ),
-                      ),
-                      Icon(Icons.chevron_right),
-                    ],
-                  )
-              ),
-            ],
-          ),
+          _buildRow(BuildContext, "My Classes", "See All", "blank"),
           Container(
             margin: EdgeInsets.symmetric(vertical:10.0),
             height: 200,
@@ -104,38 +73,7 @@ class _Pageone extends State<Pageone>{
             color: Colors.black,
             //indent: 10.0,  // for now cannot indent right
           ),
-          Row(
-            children: <Widget>[
-              SizedBox(width: 30.0),
-              Text(
-                "Recently Viewed",
-                style: TextStyle(
-                  color: Color(getColorHexFromStr("#606060")),
-                  fontSize: 23.0,
-                  fontFamily: 'QuickSand',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(width:80.0),
-              FlatButton(
-                  color: Colors.transparent,
-                  onPressed: null,
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        "See All",
-                        style: TextStyle(
-                          color: Color(getColorHexFromStr("#606060")),
-                          fontSize: 15.0,
-                          fontFamily: 'QuickSand',
-                        ),
-                      ),
-                      Icon(Icons.chevron_right),
-                    ],
-                  )
-              ),
-            ],
-          ),
+          _buildRow(BuildContext, "Recently Viewed", "See All", "blank"),
           Container(
             height: 243,
             child: ListView(
@@ -564,25 +502,7 @@ class _Pageone extends State<Pageone>{
         ],
       ),
     );  // Scaffold
-  }
-  Widget _buildBar(BuildContext context) {
-    return new AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0.0,
-      centerTitle: true,
-      title: _appBarTitle,
-      leading: IconButton(
-        icon: Icon(Icons.menu, color: Colors.grey),
-        onPressed: () => _scaffoldKey.currentState.openDrawer(),
-      ),
-      actions: <Widget>[
-        IconButton(
-          icon: _searchIcon,
-        )
-      ],
-    );
-
-  }
+  }   
   Widget _buildCard(BuildContext context, firstText, subText, imagePath){
     return new 
     Card(
@@ -638,6 +558,41 @@ class _Pageone extends State<Pageone>{
           ],
         ) 
       ),
+    );
+  }  // widget
+  Widget _buildRow(BuildContext, firstText, secondText, linkPage){
+    return new
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: <Widget>[
+        Text(
+          firstText,
+          style: TextStyle(
+            color: Color(getColorHexFromStr("#606060")),
+            fontSize: 23.0,
+            fontFamily: 'Futura',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(width:MediaQuery.of(context).size.width/6),
+        FlatButton(
+            color: Colors.transparent,
+            onPressed: null,
+            child: Row(
+              children: <Widget>[
+                Text(
+                  secondText,
+                  style: TextStyle(
+                    color: Color(getColorHexFromStr("#606060")),
+                    fontSize: 15.0,
+                    fontFamily: 'Futura',
+                  ),
+                ),
+                Icon(Icons.chevron_right),
+              ],
+            )
+        ),
+      ],
     );
   }
 }
