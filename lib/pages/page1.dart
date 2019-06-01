@@ -7,7 +7,11 @@ class Pageone extends StatefulWidget{
 }
 
 class _Pageone extends State<Pageone>{
-
+  List test_ls =[
+        ["Physics", "10 Boards", "assets/physics.jpg"],
+        ["Chemistry", "10 Boards", "assets/chem.jpg"],
+        ["Biology", "40 Boards", "assets/bio.jpg"],
+      ];
   List subjects = ["physics","math","econs","chemistry"];//new List();
   List filterSubjects = ["physics","math","econs","chemistry"];// new List();
 
@@ -47,9 +51,37 @@ class _Pageone extends State<Pageone>{
       resizeToAvoidBottomPadding: false,
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      //appBar: _buildBar(context),
+//       appBar: //_buildBar(context),
+//       AppBar(
+//           title: new TextField(
+//             decoration: new InputDecoration(
+//                 hintText: 'Search...',
+//                 suffixIcon: _searchIcon,
+// //                border: new OutlineInputBorder(
+// //                  borderRadius: new BorderRadius.circular(25.0),
+// ////                  borderSide: new BorderSide(
+// ////                  ),
+// //                ),
+//             ),
+//           ),
+//           // See if we can somehow add a container here and a search bar inside
+//             backgroundColor: Colors.transparent,
+//             elevation: 0.0,
+//           leading: IconButton(
+//             icon: Icon(Icons.menu, color: Colors.grey),
+//             onPressed: () => _scaffoldKey.currentState.openDrawer(),
+//           ),
+// //          actions: <Widget>[
+// //            IconButton(
+// //              icon: _searchIcon,
+// //            )
+// //          ],
+
+//         ),
+
       body: //callPage(_currentIndex),
       ListView(
+        //new Column(
         //mainAxisSize: MainAxisSize.max,
         //padding: EdgeInsets.only(top:80.0),
         children: <Widget>[
@@ -58,15 +90,29 @@ class _Pageone extends State<Pageone>{
           Container(
             margin: EdgeInsets.symmetric(vertical:10.0),
             height: 200,
-            child: _horiListView(context),
-            // child: ListView(
-            //   scrollDirection: Axis.horizontal,
-            //   children: <Widget>[
-            //     _buildCard(context, "Physics", "10 Boards", "assets/physics.jpg"),
-            //     _buildCard(context, "Chemistry", "10 Boards", "assets/chem.jpg"),
-            //     _buildCard(context, "Biology", "40 Boards", "assets/bio.jpg"),
-            //   ],
-            // ),  // ListView
+            // child: Row(children: <Widget>[
+            //   new Expanded(
+            //     child: _horiListView(context),
+            //   //child: _horiListView(context),
+            // ),
+            // ],
+            // ),
+            // child: Expanded(
+            //     child: _horiListView(context),
+            //   //child: _horiListView(context),
+            // ),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              // itemCount: test_ls.length,
+              // itemBuilder: (context, index) {
+              // return _buildCard(context, test_ls[index][0], test_ls[index][1], test_ls[index][0]);        
+              //   },
+              children: <Widget>[
+                _buildCard(context, test_ls[0][0], test_ls[0][1], test_ls[0][2]),
+                _buildCard(context, test_ls[1][0], test_ls[1][1], test_ls[1][2]),
+                _buildCard(context, test_ls[2][0], test_ls[2][1], test_ls[2][2]),
+              ],
+            ), 
           ),  // Container for slidy
           SizedBox(height: 10.0),
           Divider(
@@ -287,6 +333,7 @@ class _Pageone extends State<Pageone>{
             ),
         ],
       ),
+     // ),
     );  // Scaffold
   }   
   Widget _buildCard(BuildContext context, firstText, subText, imagePath){
@@ -386,16 +433,13 @@ class _Pageone extends State<Pageone>{
     );
   }
   Widget _horiListView(BuildContext context){
-    var sample_ls =[
-      ["Physics", "10 Boards", "assets/physics.jpg"],
-      ["Chemistry", "10 Boards", "assets/chem.jpg"],
-      ["Biology", "40 Boards", "assets/bio.jpg"],
-    ];
+    
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: sample_ls.length,
+      itemCount: test_ls.length,
       itemBuilder: (context, index) {
-        return _buildCard(context, sample_ls[index][0], sample_ls[index][1], sample_ls[index][0]);        },
+      return _buildCard(context, test_ls[index][0], test_ls[index][1], test_ls[index][0]);        
+        },
     );
   }
 }
