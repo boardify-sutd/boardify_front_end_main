@@ -49,7 +49,7 @@ class _Pageone extends State<Pageone>{
       backgroundColor: Colors.white,
       //appBar: _buildBar(context),
       body: //callPage(_currentIndex),
-      Column(
+      ListView(
         //mainAxisSize: MainAxisSize.max,
         //padding: EdgeInsets.only(top:80.0),
         children: <Widget>[
@@ -58,14 +58,15 @@ class _Pageone extends State<Pageone>{
           Container(
             margin: EdgeInsets.symmetric(vertical:10.0),
             height: 200,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                _buildCard(context, "Physics", "10 Boards", "assets/physics.jpg"),
-                _buildCard(context, "Chemistry", "10 Boards", "assets/chem.jpg"),
-                _buildCard(context, "Biology", "40 Boards", "assets/bio.jpg"),
-              ],
-            ),  // ListView
+            child: _horiListView(context),
+            // child: ListView(
+            //   scrollDirection: Axis.horizontal,
+            //   children: <Widget>[
+            //     _buildCard(context, "Physics", "10 Boards", "assets/physics.jpg"),
+            //     _buildCard(context, "Chemistry", "10 Boards", "assets/chem.jpg"),
+            //     _buildCard(context, "Biology", "40 Boards", "assets/bio.jpg"),
+            //   ],
+            // ),  // ListView
           ),  // Container for slidy
           SizedBox(height: 10.0),
           Divider(
@@ -74,431 +75,216 @@ class _Pageone extends State<Pageone>{
             //indent: 10.0,  // for now cannot indent right
           ),
           _buildRow(BuildContext, "Recently Viewed", "See All", "blank"),
-          Container(
-            height: 243,
-            child: ListView(
-              scrollDirection: Axis.vertical,
+            Column(
               children: <Widget>[
-                Column(
+                Row(
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          //color: Colors.transparent,
-                          width: 195.0,
-                          decoration: new BoxDecoration(
-                            //borderRadius: new BorderRadius.circular(30.0),
+                    Container(
+                      //color: Colors.transparent,
+                      width: 195.0,
+                      decoration: new BoxDecoration(
+                        //borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                      child:Card(
+                          elevation: 0.0,
+                          //color: Color(getColorHexFromStr("#C5B7E8")),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          child:Card(
-                              elevation: 0.0,
-                              //color: Color(getColorHexFromStr("#C5B7E8")),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(height: 14.0),
+                              Container(
+                                height: 130.0,
+                                width: 180.0,
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                      width: 10, //
+                                      color: Color(getColorHexFromStr("#D7D7D7"))
+                                  ),
+                                  image: DecorationImage(
+                                    image: new AssetImage("assets/board1.png"),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  shape: BoxShape.rectangle,
+                                ),
                               ),
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 14.0),
-                                  Container(
-                                    height: 130.0,
-                                    width: 180.0,
-                                    decoration: new BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                          width: 10, //
-                                          color: Color(getColorHexFromStr("#D7D7D7"))
-                                      ),
-                                      image: DecorationImage(
-                                        image: new AssetImage("assets/board1.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.rectangle,
-                                    ),
+                              //SizedBox(height: 10.0),
+                              new ListTile(
+                                dense: true,
+                                title: Text("Physics 23/1/19 08:51",
+                                  style: TextStyle(
+                                    color: Color(getColorHexFromStr("#606060")),
+                                    fontSize: 10.0,
+                                    fontFamily: 'QuickSand',
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  //SizedBox(height: 10.0),
-                                  new ListTile(
-                                    dense: true,
-                                    title: Text("Physics 23/1/19 08:51",
-                                      style: TextStyle(
-                                        color: Color(getColorHexFromStr("#606060")),
-                                        fontSize: 10.0,
-                                        fontFamily: 'QuickSand',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    trailing: Icon(Icons.more_vert, color: Colors.grey),
-                                  ),
-                                ],
-                              )
-                          ),
-                        ), // First Card
-                        Container(
-                          //color: Colors.transparent,
-                          width: 195.0,
-                          decoration: new BoxDecoration(
-                            //borderRadius: new BorderRadius.circular(30.0),
-                          ),
-                          child:Card(
-                              elevation: 0.0,
-                              //color: Color(getColorHexFromStr("#C5B7E8")),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                trailing: Icon(Icons.more_vert, color: Colors.grey),
                               ),
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 14.0),
-                                  Container(
-                                    height: 130.0,
-                                    width: 180.0,
-                                    decoration: new BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                          width: 10, //
-                                          color: Color(getColorHexFromStr("#D7D7D7"))
-                                      ),
-                                      image: DecorationImage(
-                                        //                            image: new AssetImage(
-                                        //                                'assets/assets/alucard.jpg'),
-                                        //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                        image: new AssetImage("assets/board2.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.rectangle,
-                                    ),
-                                  ),
-                                  //SizedBox(height: 10.0),
-                                  new ListTile(
-                                    dense: true,
-                                    title: Text("Chemistry 11/5/19 13:01",
-                                      style: TextStyle(
-                                        color: Color(getColorHexFromStr("#606060")),
-                                        fontSize: 10.0,
-                                        fontFamily: 'QuickSand',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    trailing: Icon(Icons.more_vert, color: Colors.grey),
-                                  ),
-                                ],
-                              )
+                            ],
+                          )
+                      ),
+                    ), // First Card
+                    Container(
+                      //color: Colors.transparent,
+                      width: 195.0,
+                      decoration: new BoxDecoration(
+                        //borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                      child:Card(
+                          elevation: 0.0,
+                          //color: Color(getColorHexFromStr("#C5B7E8")),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                        ), // Second Card
-                      ],
-                    ), // First Row
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          //color: Colors.transparent,
-                          width: 195.0,
-                          decoration: new BoxDecoration(
-                            //borderRadius: new BorderRadius.circular(30.0),
-                          ),
-                          child:Card(
-                              elevation: 0.0,
-                              //color: Color(getColorHexFromStr("#C5B7E8")),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(height: 14.0),
+                              Container(
+                                height: 130.0,
+                                width: 180.0,
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                      width: 10, //
+                                      color: Color(getColorHexFromStr("#D7D7D7"))
+                                  ),
+                                  image: DecorationImage(
+                                    //                            image: new AssetImage(
+                                    //                                'assets/assets/alucard.jpg'),
+                                    //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
+                                    image: new AssetImage("assets/board2.png"),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  shape: BoxShape.rectangle,
+                                ),
                               ),
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 14.0),
-                                  Container(
-                                    height: 130.0,
-                                    width: 180.0,
-                                    decoration: new BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                          width: 10, //
-                                          color: Color(getColorHexFromStr("#D7D7D7"))
-                                      ),
-                                      image: DecorationImage(
-                                        image: new AssetImage("assets/board1.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.rectangle,
-                                    ),
+                              //SizedBox(height: 10.0),
+                              new ListTile(
+                                dense: true,
+                                title: Text("Chemistry 11/5/19 13:01",
+                                  style: TextStyle(
+                                    color: Color(getColorHexFromStr("#606060")),
+                                    fontSize: 10.0,
+                                    fontFamily: 'QuickSand',
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  //SizedBox(height: 10.0),
-                                  new ListTile(
-                                    dense: true,
-                                    title: Text("Physics 23/1/19 08:51",
-                                      style: TextStyle(
-                                        color: Color(getColorHexFromStr("#606060")),
-                                        fontSize: 10.0,
-                                        fontFamily: 'QuickSand',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    trailing: Icon(Icons.more_vert, color: Colors.grey),
-                                  ),
-                                ],
-                              )
-                          ),
-                        ), // First Card
-                        Container(
-                          //color: Colors.transparent,
-                          width: 195.0,
-                          decoration: new BoxDecoration(
-                            //borderRadius: new BorderRadius.circular(30.0),
-                          ),
-                          child:Card(
-                              elevation: 0.0,
-                              //color: Color(getColorHexFromStr("#C5B7E8")),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                trailing: Icon(Icons.more_vert, color: Colors.grey),
                               ),
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 14.0),
-                                  Container(
-                                    height: 130.0,
-                                    width: 180.0,
-                                    decoration: new BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                          width: 10, //
-                                          color: Color(getColorHexFromStr("#D7D7D7"))
-                                      ),
-                                      image: DecorationImage(
-                                        //                            image: new AssetImage(
-                                        //                                'assets/assets/alucard.jpg'),
-                                        //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                        image: new AssetImage("assets/board2.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.rectangle,
-                                    ),
-                                  ),
-                                  //SizedBox(height: 10.0),
-                                  new ListTile(
-                                    dense: true,
-                                    title: Text("Chemistry 11/5/19 13:01",
-                                      style: TextStyle(
-                                        color: Color(getColorHexFromStr("#606060")),
-                                        fontSize: 10.0,
-                                        fontFamily: 'QuickSand',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    trailing: Icon(Icons.more_vert, color: Colors.grey),
-                                  ),
-                                ],
-                              )
-                          ),
-                        ), // Second Card
-                      ],
-                    ), // Second Row
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          //color: Colors.transparent,
-                          width: 195.0,
-                          decoration: new BoxDecoration(
-                            //borderRadius: new BorderRadius.circular(30.0),
-                          ),
-                          child:Card(
-                              elevation: 0.0,
-                              //color: Color(getColorHexFromStr("#C5B7E8")),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 14.0),
-                                  Container(
-                                    height: 130.0,
-                                    width: 180.0,
-                                    decoration: new BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                          width: 10, //
-                                          color: Color(getColorHexFromStr("#D7D7D7"))
-                                      ),
-                                      image: DecorationImage(
-                                        image: new AssetImage("assets/board1.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.rectangle,
-                                    ),
-                                  ),
-                                  //SizedBox(height: 10.0),
-                                  new ListTile(
-                                    dense: true,
-                                    title: Text("Physics 23/1/19 08:51",
-                                      style: TextStyle(
-                                        color: Color(getColorHexFromStr("#606060")),
-                                        fontSize: 10.0,
-                                        fontFamily: 'QuickSand',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    trailing: Icon(Icons.more_vert, color: Colors.grey),
-                                  ),
-                                ],
-                              )
-                          ),
-                        ), // First Card
-                        Container(
-                          //color: Colors.transparent,
-                          width: 195.0,
-                          decoration: new BoxDecoration(
-                            //borderRadius: new BorderRadius.circular(30.0),
-                          ),
-                          child:Card(
-                              elevation: 0.0,
-                              //color: Color(getColorHexFromStr("#C5B7E8")),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 14.0),
-                                  Container(
-                                    height: 130.0,
-                                    width: 180.0,
-                                    decoration: new BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                          width: 10, //
-                                          color: Color(getColorHexFromStr("#D7D7D7"))
-                                      ),
-                                      image: DecorationImage(
-                                        //                            image: new AssetImage(
-                                        //                                'assets/assets/alucard.jpg'),
-                                        //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                        image: new AssetImage("assets/board2.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.rectangle,
-                                    ),
-                                  ),
-                                  //SizedBox(height: 10.0),
-                                  new ListTile(
-                                    dense: true,
-                                    title: Text("Chemistry 11/5/19 13:01",
-                                      style: TextStyle(
-                                        color: Color(getColorHexFromStr("#606060")),
-                                        fontSize: 10.0,
-                                        fontFamily: 'QuickSand',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    trailing: Icon(Icons.more_vert, color: Colors.grey),
-                                  ),
-                                ],
-                              )
-                          ),
-                        ), // Second Card
-                      ],
-                    ), // Third Row
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          //color: Colors.transparent,
-                          width: 195.0,
-                          decoration: new BoxDecoration(
-                            //borderRadius: new BorderRadius.circular(30.0),
-                          ),
-                          child:Card(
-                              elevation: 0.0,
-                              //color: Color(getColorHexFromStr("#C5B7E8")),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 14.0),
-                                  Container(
-                                    height: 130.0,
-                                    width: 180.0,
-                                    decoration: new BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                          width: 10, //
-                                          color: Color(getColorHexFromStr("#D7D7D7"))
-                                      ),
-                                      image: DecorationImage(
-                                        image: new AssetImage("assets/board1.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.rectangle,
-                                    ),
-                                  ),
-                                  //SizedBox(height: 10.0),
-                                  new ListTile(
-                                    dense: true,
-                                    title: Text("Physics 23/1/19 08:51",
-                                      style: TextStyle(
-                                        color: Color(getColorHexFromStr("#606060")),
-                                        fontSize: 10.0,
-                                        fontFamily: 'QuickSand',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    trailing: Icon(Icons.more_vert, color: Colors.grey),
-                                  ),
-                                ],
-                              )
-                          ),
-                        ), // First Card
-                        Container(
-                          //color: Colors.transparent,
-                          width: 195.0,
-                          decoration: new BoxDecoration(
-                            //borderRadius: new BorderRadius.circular(30.0),
-                          ),
-                          child:Card(
-                              elevation: 0.0,
-                              //color: Color(getColorHexFromStr("#C5B7E8")),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              child: Column(
-                                children: <Widget>[
-                                  SizedBox(height: 14.0),
-                                  Container(
-                                    height: 130.0,
-                                    width: 180.0,
-                                    decoration: new BoxDecoration(
-                                      borderRadius: new BorderRadius.circular(10.0),
-                                      border: Border.all(
-                                          width: 10, //
-                                          color: Color(getColorHexFromStr("#D7D7D7"))
-                                      ),
-                                      image: DecorationImage(
-                                        //                            image: new AssetImage(
-                                        //                                'assets/assets/alucard.jpg'),
-                                        //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                        image: new AssetImage("assets/board2.png"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                      shape: BoxShape.rectangle,
-                                    ),
-                                  ),
-                                  //SizedBox(height: 10.0),
-                                  new ListTile(
-                                    dense: true,
-                                    title: Text("Chemistry 11/5/19 13:01",
-                                      style: TextStyle(
-                                        color: Color(getColorHexFromStr("#606060")),
-                                        fontSize: 10.0,
-                                        fontFamily: 'QuickSand',
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    trailing: Icon(Icons.more_vert, color: Colors.grey),
-                                  ),
-                                ],
-                              )
-                          ),
-                        ), // Second Card
-                      ],
-                    ), // Fourth Row
+                            ],
+                          )
+                      ),
+                    ), // Second Card
                   ],
-                ),
+                ), // First Row
+                Row(
+                  children: <Widget>[
+                    Container(
+                      //color: Colors.transparent,
+                      width: 195.0,
+                      decoration: new BoxDecoration(
+                        //borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                      child:Card(
+                          elevation: 0.0,
+                          //color: Color(getColorHexFromStr("#C5B7E8")),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(height: 14.0),
+                              Container(
+                                height: 130.0,
+                                width: 180.0,
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                      width: 10, //
+                                      color: Color(getColorHexFromStr("#D7D7D7"))
+                                  ),
+                                  image: DecorationImage(
+                                    image: new AssetImage("assets/board1.png"),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  shape: BoxShape.rectangle,
+                                ),
+                              ),
+                              //SizedBox(height: 10.0),
+                              new ListTile(
+                                dense: true,
+                                title: Text("Physics 23/1/19 08:51",
+                                  style: TextStyle(
+                                    color: Color(getColorHexFromStr("#606060")),
+                                    fontSize: 10.0,
+                                    fontFamily: 'QuickSand',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                trailing: Icon(Icons.more_vert, color: Colors.grey),
+                              ),
+                            ],
+                          )
+                      ),
+                    ), // First Card
+                    Container(
+                      //color: Colors.transparent,
+                      width: 195.0,
+                      decoration: new BoxDecoration(
+                        //borderRadius: new BorderRadius.circular(30.0),
+                      ),
+                      child:Card(
+                          elevation: 0.0,
+                          //color: Color(getColorHexFromStr("#C5B7E8")),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SizedBox(height: 14.0),
+                              Container(
+                                height: 130.0,
+                                width: 180.0,
+                                decoration: new BoxDecoration(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                  border: Border.all(
+                                      width: 10, //
+                                      color: Color(getColorHexFromStr("#D7D7D7"))
+                                  ),
+                                  image: DecorationImage(
+                                    //                            image: new AssetImage(
+                                    //                                'assets/assets/alucard.jpg'),
+                                    //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
+                                    image: new AssetImage("assets/board2.png"),
+                                    fit: BoxFit.fill,
+                                  ),
+                                  shape: BoxShape.rectangle,
+                                ),
+                              ),
+                              //SizedBox(height: 10.0),
+                              new ListTile(
+                                dense: true,
+                                title: Text("Chemistry 11/5/19 13:01",
+                                  style: TextStyle(
+                                    color: Color(getColorHexFromStr("#606060")),
+                                    fontSize: 10.0,
+                                    fontFamily: 'QuickSand',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                trailing: Icon(Icons.more_vert, color: Colors.grey),
+                              ),
+                            ],
+                          )
+                      ),
+                    ), // Second Card
+                  ],
+                ), // Second Row
               ],
-            ),  // ListView
-          ),  // Container for Vertical
-
+            ),
         ],
       ),
     );  // Scaffold
@@ -597,6 +383,19 @@ class _Pageone extends State<Pageone>{
             )
         ),
       ],
+    );
+  }
+  Widget _horiListView(BuildContext context){
+    var sample_ls =[
+      ["Physics", "10 Boards", "assets/physics.jpg"],
+      ["Chemistry", "10 Boards", "assets/chem.jpg"],
+      ["Biology", "40 Boards", "assets/bio.jpg"],
+    ];
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: sample_ls.length,
+      itemBuilder: (context, index) {
+        return _buildCard(context, sample_ls[index][0], sample_ls[index][1], sample_ls[index][0]);        },
     );
   }
 }
