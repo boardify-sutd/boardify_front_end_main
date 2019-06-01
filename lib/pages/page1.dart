@@ -92,169 +92,9 @@ class _Pageone extends State<Pageone>{
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: <Widget>[
-                // Build the container for one card
-                Container(
-                  //color: Colors.transparent,
-                  width: 200.0,
-                  decoration: new BoxDecoration(
-                    //borderRadius: new BorderRadius.circular(30.0),
-                  ),
-                  child:Card(
-                      color: Color(getColorHexFromStr("#A6C5F2")),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          SizedBox(height: 10.0),
-                          Container(
-                            height: 130.0,
-                            width: 150.0,
-                            decoration: new BoxDecoration(
-                              borderRadius: new BorderRadius.circular(20.0),
-                              image: DecorationImage(
-                                //                            image: new AssetImage(
-                                //                                'assets/assets/alucard.jpg'),
-                                //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                image: new AssetImage("assets/physics.png"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: BoxShape.rectangle,
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          new Text("Physics",
-                            style: TextStyle(
-                              color: Color(getColorHexFromStr("#606060")),
-                              fontSize: 18.0,
-                              fontFamily: 'QuickSand',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          new Text("15 boards",
-                            style: TextStyle(
-                              color: Color(getColorHexFromStr("#606060")),
-                              fontSize: 15.0,
-                              fontFamily: 'QuickSand',
-                            ),
-                          ),
-                        ],
-                      )
-                  ),
-                ), // First Card
-                Container(
-                  //color: Colors.transparent,
-                  width: 200.0,
-                  decoration: new BoxDecoration(
-                    //borderRadius: new BorderRadius.circular(30.0),
-                  ),
-                  child:Card(
-                      color: Color(getColorHexFromStr("#C5B7E8")),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          SizedBox(height: 10.0),
-                          Container(
-                            height: 130.0,
-                            width: 150.0,
-                            decoration: new BoxDecoration(
-                              borderRadius: new BorderRadius.circular(20.0),
-                              image: DecorationImage(
-                                //                            image: new AssetImage(
-                                //                                'assets/assets/alucard.jpg'),
-                                //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                image: new AssetImage("assets/chem.png"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: BoxShape.rectangle,
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          new Text("Chemistry",
-                            style: TextStyle(
-                              color: Color(getColorHexFromStr("#606060")),
-                              fontSize: 18.0,
-                              fontFamily: 'QuickSand',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          new Text("10 boards",
-                            style: TextStyle(
-                              color: Color(getColorHexFromStr("#606060")),
-                              fontSize: 15.0,
-                              fontFamily: 'QuickSand',
-                            ),
-                          ),
-                        ],
-                      )
-                  ),
-                ), // Second Card
-                Container(
-                  //color: Colors.transparent,
-                  width: 200.0,
-                  decoration: new BoxDecoration(
-                    //borderRadius: new BorderRadius.circular(30.0),
-                  ),
-                  child:Card(
-                      color: Color(getColorHexFromStr("#A6E0F2")),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          SizedBox(height: 10.0),
-                          Container(
-                            height: 130.0,
-                            width: 150.0,
-                            decoration: new BoxDecoration(
-                              borderRadius: new BorderRadius.circular(20.0),
-                              image: DecorationImage(
-                                //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                image: new AssetImage("assets/bio.png"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: BoxShape.rectangle,
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          new Text("Biology",
-                            style: TextStyle(
-                              color: Color(getColorHexFromStr("#606060")),
-                              fontSize: 18.0,
-                              fontFamily: 'QuickSand',
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          new Text("43 boards",
-                            style: TextStyle(
-                              color: Color(getColorHexFromStr("#606060")),
-                              fontSize: 15.0,
-                              fontFamily: 'QuickSand',
-                            ),
-                          ),
-                        ],
-                      )
-                    // Wrap ensures that it does not overflow
-//                      child: Wrap(
-//                        children: <Widget>[
-//                          // Using an image URL
-//                          Image.network("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-//                          ListTile(
-//                            title: Text("Heading1"),
-//                            subtitle: Text("SubHeading1"),
-//                          )
-//                        ],
-//                      ),
-                  ),
-                ), // Third Card
+                _buildCard(context, "Physics", "10 Boards", "assets/physics.jpg"),
+                _buildCard(context, "Chemistry", "10 Boards", "assets/chem.jpg"),
+                _buildCard(context, "Biology", "40 Boards", "assets/bio.jpg"),
               ],
             ),  // ListView
           ),  // Container for slidy
@@ -742,5 +582,62 @@ class _Pageone extends State<Pageone>{
       ],
     );
 
+  }
+  Widget _buildCard(BuildContext context, firstText, subText, imagePath){
+    return new 
+    Card(
+      color: Colors.white,//Color(getColorHexFromStr("#A6C5F2")),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Container(
+        height: 190.0,
+        width: 200.0,
+        
+        decoration: new BoxDecoration(
+          borderRadius: new BorderRadius.circular(20.0),
+          // gradient: RadialGradient(
+          //         // begin: FractionalOffset.bottomCenter,
+          //         // end: FractionalOffset.topCenter,
+          //         colors: [
+          //           Colors.grey.withOpacity(0.0001),
+          //           Colors.black26,
+          //         ],
+          //         stops: [
+          //           0.1,
+          //           1.0
+          //         ]),
+          image: DecorationImage(
+            //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
+            image: new AssetImage(imagePath),
+            colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),
+            
+            fit: BoxFit.fill,
+          ),
+          shape: BoxShape.rectangle,
+        ),
+        alignment: Alignment.bottomCenter,
+        padding: new EdgeInsets.only(top: 140.0),
+        child: new Column(
+          children: <Widget>[
+            new Text(firstText,
+              style: TextStyle(
+                color: Color(getColorHexFromStr("#606060")),
+                fontSize: 18.0,
+                fontFamily: 'QuickSand Bold',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            new Text(subText,
+              style: TextStyle(
+                color: Color(getColorHexFromStr("#606060")),
+                fontSize: 15.0,
+                fontFamily: 'QuickSand Bold',
+              ),
+            ),
+          ],
+        ) 
+      ),
+    );
   }
 }
