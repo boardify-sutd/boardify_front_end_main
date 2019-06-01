@@ -563,15 +563,19 @@ class _Pageone extends State<Pageone>{
   Widget _buildRow(BuildContext, firstText, secondText, linkPage){
     return new
     Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
-        Text(
-          firstText,
-          style: TextStyle(
-            color: Color(getColorHexFromStr("#606060")),
-            fontSize: 23.0,
-            fontFamily: 'Futura',
-            fontWeight: FontWeight.bold,
+        SizedBox(width: 30.0,),
+        Container(
+          width: MediaQuery.of(context).size.width/2,
+          child: Text(
+            firstText,
+            style: TextStyle(
+              color: Color(getColorHexFromStr("#606060")),
+              fontSize: 23.0,
+              fontFamily: 'Futura',
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         SizedBox(width:MediaQuery.of(context).size.width/6),
