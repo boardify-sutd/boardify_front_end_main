@@ -10,6 +10,8 @@ class _Pagetwo extends State<Pagetwo>{
 
   Choice _selectedChoice = choices[0]; // The app's "state".
 
+  String dropdownValue = 'Date';
+
   void _select(Choice choice) {
     // Causes the app to rebuild with the new _selectedChoice.
     setState(() {
@@ -20,6 +22,14 @@ class _Pagetwo extends State<Pagetwo>{
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   var sample_ls =[
+      ["23/1/19 08:52", "10", "98", "assets/board1.png"],
+      ["24/1/19 08:53", "11", "12", "assets/board2.png"],
+      ["25/1/19 08:54", "42", "54", "assets/board1.png"],
+      ["25/1/19 08:54", "62", "14", "assets/board1.png"],
+      ["23/1/19 08:52", "10", "98", "assets/board1.png"],
+      ["24/1/19 08:53", "11", "12", "assets/board2.png"],
+      ["25/1/19 08:54", "42", "54", "assets/board1.png"],
+      ["25/1/19 08:54", "62", "14", "assets/board1.png"],
       ["23/1/19 08:52", "10", "98", "assets/board1.png"],
       ["24/1/19 08:53", "11", "12", "assets/board2.png"],
       ["25/1/19 08:54", "42", "54", "assets/board1.png"],
@@ -88,13 +98,6 @@ class _Pagetwo extends State<Pagetwo>{
                         //_select(choices[0]);
                       //},
                     ),
-                    // action button
-                    // IconButton(
-                    //   icon: Icon(Icons.more_vert, color: Colors.grey),
-                    //   onPressed: null, //() {
-                    //     //_select(choices[1]);
-                    //   //},
-                    // ),
                     PopupMenuButton<Choice>(
                       icon: new Icon(Icons.more_vert, color: Colors.grey),
                       onSelected: _select,
@@ -114,30 +117,87 @@ class _Pagetwo extends State<Pagetwo>{
           ),
         )
       ),
-      // // overflow menu
-      // PopupMenuButton<Choice>(
-      //   onSelected: _select,
-      //   itemBuilder: (BuildContext context) {
-      //     return choices.skip(2).map((Choice choice) {
-      //       return PopupMenuItem<Choice>(
-      //         value: choice,
-      //         child: Text(choice.title),
-      //       );
-      //     }).toList();
-      //   },
-      // ),
       body:
       OrientationBuilder(
         builder: (context, orientation) {
-          return GridView.count(
-            // Create a grid with 2 columns in portrait mode, or 3 columns in
-            // landscape mode.
-            crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-            // Generate X Widgets that display their index in the List
-            children: List.generate(sample_ls.length, (index) {
-              return _cardBoard(context, index);
-            }),
+          return Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  SizedBox(width: MediaQuery.of(context).size.width/27),
+                  new Container(
+                    margin: new EdgeInsets.only(top: 2.0),
+                    decoration: new BoxDecoration(
+                      color: Color(getColorHexFromStr("#D7D7D7")),
+                      borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
+                  ),
+                  child: 
+                    DropdownButton<String>(
+                      isDense: true,
+                      value: dropdownValue,
+                      onChanged: (String newValue) {
+                        setState(() {
+                          dropdownValue = newValue;
+                        });
+                      },
+                      items: <String>['Date', 'Likes', 'Comments']
+                        .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Row(
+                              children: <Widget>[
+                                SizedBox(width:8.0),
+                                Text(value,
+                                  style: TextStyle(
+                                    color: Color(getColorHexFromStr("#606060")),
+                                    fontSize: 15.0,
+                                    fontFamily: 'Futura',
+                                    //fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            )
+                          );
+                        })
+                        .toList(),
+                        //hint: Text('Sort By'),
+                    ),
+                  ),
+                  SizedBox(width: MediaQuery.of(context).size.width/1.7,),
+                  PopupMenuButton<Choice>(
+                      icon: new Icon(Icons.menu, color: Colors.grey),
+                      onSelected: _select,
+                      itemBuilder: (BuildContext context) {
+                        return choices.skip(2).map((Choice choice) {
+                          return PopupMenuItem<Choice>(
+                            value: choice,
+                            child: Text(choice.title),
+                          );
+                        }).toList();
+                      },
+                    ),
+                ],
+              ),
+
+                
+              Expanded(
+                child: SizedBox(
+                  height: 200.0,
+                  child: new GridView.count(
+                // Create a grid with 2 columns in portrait mode, or 3 columns in
+                // landscape mode.
+                crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+                // Generate X Widgets that display their index in the List
+                children: List.generate(sample_ls.length, (index) {
+                  return _cardBoard(context, index);
+                }),
+              )
+                )
+              )
+              ,
+            ],
           );
+          
         },
       ),
     //   new GridView.builder(
