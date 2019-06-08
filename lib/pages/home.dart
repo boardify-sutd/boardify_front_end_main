@@ -5,7 +5,8 @@ import './page2.dart';
 import './page3.dart';
 import './page4.dart';
 import './board.dart';
-
+import './subjects.dart';
+import './week.dart'; 
 
 
 class HomePage extends StatefulWidget{
@@ -53,7 +54,7 @@ class _HomePageState extends State<HomePage>{
       case 1:
         return Pagetwo();
       case 2:
-        return Pagethree();
+        return Subjects();
       case 3:
         return Board();//Pagefour();
         break;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './my_profile_page.dart';
+import './board.dart';
 
 class Pagetwo extends StatefulWidget{
   @override
@@ -78,9 +79,9 @@ class _Pagetwo extends State<Pagetwo>{
                   children: <Widget>[
                     IconButton(
                       icon: Icon(Icons.clear, color: Colors.grey),
-                      onPressed: null, //() {
-                        //_select(choices[1]);
-                      //},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),  
                     const Text('Cohort 1',
                       style: TextStyle(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './my_profile_page.dart';
+import './subjects.dart';
+
 
 class Pageone extends StatefulWidget{
   @override
@@ -71,7 +73,7 @@ class _Pageone extends State<Pageone>{
             onPressed: () => _scaffoldKey.currentState.openDrawer(),
           ),
       ),
-      drawer: new Drawer(
+drawer: new Drawer(
           child: new ListView(
             children: <Widget>[
               Center(
@@ -454,6 +456,12 @@ class _Pageone extends State<Pageone>{
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
+      child: InkWell(
+        onTap: () {
+          Navigator.of(context).push(new MaterialPageRoute
+        (builder: (BuildContext context) =>
+          new Subjects()));
+        },
       child: Container(
         height: 190.0,
         width: 200.0,
@@ -501,6 +509,7 @@ class _Pageone extends State<Pageone>{
             ),
           ],
         ) 
+      ),
       ),
     );
   }  // widget

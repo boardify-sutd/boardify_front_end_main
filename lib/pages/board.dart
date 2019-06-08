@@ -38,112 +38,101 @@ class _Board extends State<Board>{
     return new Scaffold(
       resizeToAvoidBottomPadding: false,
       key: _scaffoldKey,
-      backgroundColor: Colors.white,
-      //appBar: _buildBar(context),
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          automaticallyImplyLeading: false, // hides leading widget
+          flexibleSpace: new Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height:20.0),
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.clear, color: Colors.grey),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),  
+                    // Container(width: 200.0,
+                    //   child: const Text('Physics Week 1 Cohort 1 10:32',
+                    //   style: TextStyle(
+                    //       color: Colors.white,
+                    //       //fontSize: 20.0,
+                    //       fontFamily: 'Futura',
+                    //       //fontWeight: FontWeight.bold,
+                    //       letterSpacing: 1.0,
+                    //   ),
+                    // ),
+                    // ),
+                    const Text('Physics Week 1 Cohort 1 10:32',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontFamily: 'Futura',
+                          //fontWeight: FontWeight.bold,
+                          letterSpacing: 1.0,
+                      ),
+                    ),
+                    
+                    SizedBox(width: MediaQuery.of(context).size.width/16,),
+                    IconButton(
+                      icon: Icon(Icons.star_border, color: Colors.white),
+                      onPressed: null,//() {
+                        //_select(choices[0]);
+                      //},
+                    ),
+                  ],
+                ) 
+              ],
+            ),  
+          ),
+        ),
       body:
       Column(
         mainAxisSize: MainAxisSize.max,
         //padding: EdgeInsets.only(top:80.0),
         children: <Widget>[
-          SizedBox(height: 10.0),
-          Row(
-            children: <Widget>[
-              SizedBox(width: 20.0),
-              Text(
-                "Physics | Quantum Physics",
-                style: TextStyle(
-                  color: Color(getColorHexFromStr("#606060")),
-                  fontSize: 20.0,
-                  fontFamily: 'QuickSand',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(width:10.0),
-              FlatButton(
-                  color: Colors.transparent,
-                  onPressed: null,
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        "23/1/19",
-                        style: TextStyle(
-                          color: Color(getColorHexFromStr("#606060")),
-                          fontSize: 15.0,
-                          fontFamily: 'QuickSand',
-                        ),
-                      ),
-                      Icon(Icons.chevron_right),
-                    ],
-                  )
-              ),
-            ],
-          ),
+          SizedBox(height: 50.0),
           Container(
             margin: EdgeInsets.symmetric(vertical:10.0),
             height: 250,
-            child:Card(
-                //color: Color(getColorHexFromStr("#A6C5F2")),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    SizedBox(height: 10.0),
+            child:
                     Container(
-                      height: 180.0,
-                      width: 280.0,
+                      height: MediaQuery.of(context).size.width,
+                      width: MediaQuery.of(context).size.width,
                       decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.circular(20.0),
+                        //borderRadius: new BorderRadius.circular(20.0),
+                        color: Colors.white,
                         image: DecorationImage(
                           //                            image: new AssetImage(
                           //                                'assets/assets/alucard.jpg'),
                           //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
                           image: new AssetImage("assets/board1.png"),
-                          fit: BoxFit.fill,
+                          fit: BoxFit.fitHeight,
                         ),
-                        shape: BoxShape.rectangle,
+                        //shape: BoxShape.rectangle,
                       ),
                     ),
-                    SizedBox(height: 10.0),
-                    new Text("By Prof Dorrien",
-                      style: TextStyle(
-                        color: Color(getColorHexFromStr("#606060")),
-                        fontSize: 18.0,
-                        fontFamily: 'QuickSand',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    new Text("Tags: Proton, Neutron",
-                      style: TextStyle(
-                        color: Color(getColorHexFromStr("#606060")),
-                        fontSize: 15.0,
-                        fontFamily: 'QuickSand',
-                      ),
-                    ),
-                  ],
-                )
-            ),
           ),
           SizedBox(height: 10.0),
-          Divider(
-            height:20.0,
-            color: Colors.black,
-            //indent: 10.0,  // for now cannot indent right
-          ),
           Row(
             children: <Widget>[
-              SizedBox(width: 30.0),
-              Text(
-                "Comments",
-                style: TextStyle(
-                  color: Color(getColorHexFromStr("#606060")),
-                  fontSize: 23.0,
-                  fontFamily: 'QuickSand',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              //SizedBox(width: 30.0),
+              IconButton(
+                      icon: Icon(Icons.favorite_border, color: Colors.grey),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ), 
+                    IconButton(
+                      icon: Icon(Icons.comment, color: Colors.grey),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ), 
               SizedBox(width:80.0),
 //              FlatButton(
 //                  color: Colors.transparent,
@@ -164,6 +153,26 @@ class _Board extends State<Board>{
 //              ),
             ],
           ),
+          Row(
+            children: <Widget>[
+              SizedBox(width:10.0),
+               new RichText(
+                text: new TextSpan(
+                  // Note: Styles for TextSpans must be explicitly defined.
+                  // Child text spans will inherit styles from parent
+                  style: new TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.white,
+                  ),
+                  children: <TextSpan>[
+                    new TextSpan(text: 'Claire Tan  ', style: new TextStyle(fontWeight: FontWeight.bold)),
+                    new TextSpan(text: 'Lionell is so cool'),
+                    //new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            ],
+          )
         ],
       ),
     );  // Scaffold
