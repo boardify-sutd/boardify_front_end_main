@@ -8,6 +8,15 @@ class Pagetwo extends StatefulWidget{
 
 class _Pagetwo extends State<Pagetwo>{
 
+  Choice _selectedChoice = choices[0]; // The app's "state".
+
+  void _select(Choice choice) {
+    // Causes the app to rebuild with the new _selectedChoice.
+    setState(() {
+      _selectedChoice = choice;
+    });
+  }
+
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   var sample_ls =[
@@ -46,53 +55,77 @@ class _Pagetwo extends State<Pagetwo>{
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(110.0), // here the desired height
-          child: AppBar(
-            automaticallyImplyLeading: true,
-            title: const Text('Cohort 1',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                  fontFamily: 'Futura',
-                  fontWeight: FontWeight.bold,
-                  letterSpacing: 1.0,
-              ),
-            ),
-        actions: <Widget>[
-          // action button
-          IconButton(
-            icon: Icon(Icons.search, color: Colors.grey),
-            onPressed: null,//() {
-              //_select(choices[0]);
-            //},
+        preferredSize: Size.fromHeight(100.0),
+        child: AppBar(
+          backgroundColor: Color(getColorHexFromStr("#34495E")),
+          automaticallyImplyLeading: false, // hides leading widget
+          flexibleSpace: new Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height:20.0),
+                Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.clear, color: Colors.grey),
+                      onPressed: null, //() {
+                        //_select(choices[1]);
+                      //},
+                    ),  
+                    const Text('Cohort 1',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30.0,
+                          fontFamily: 'Futura',
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.0,
+                      ),
+                    ),
+                    SizedBox(width: MediaQuery.of(context).size.width/2.7,),
+                    IconButton(
+                      icon: Icon(Icons.search, color: Colors.grey),
+                      onPressed: null,//() {
+                        //_select(choices[0]);
+                      //},
+                    ),
+                    // action button
+                    // IconButton(
+                    //   icon: Icon(Icons.more_vert, color: Colors.grey),
+                    //   onPressed: null, //() {
+                    //     //_select(choices[1]);
+                    //   //},
+                    // ),
+                    PopupMenuButton<Choice>(
+                      icon: new Icon(Icons.more_vert, color: Colors.grey),
+                      onSelected: _select,
+                      itemBuilder: (BuildContext context) {
+                        return choices.skip(2).map((Choice choice) {
+                          return PopupMenuItem<Choice>(
+                            value: choice,
+                            child: Text(choice.title),
+                          );
+                        }).toList();
+                      },
+                    ),
+                  ],
+                ) 
+              ],
+            ),  
           ),
-          // action button
-          IconButton(
-            icon: Icon(Icons.more_vert, color: Colors.grey),
-            onPressed: null, //() {
-              //_select(choices[1]);
-            //},
-          ),
-          // // overflow menu
-          // PopupMenuButton<Choice>(
-          //   onSelected: _select,
-          //   itemBuilder: (BuildContext context) {
-          //     return choices.skip(2).map((Choice choice) {
-          //       return PopupMenuItem<Choice>(
-          //         value: choice,
-          //         child: Text(choice.title),
-          //       );
-          //     }).toList();
-          //   },
-          // ),
-        ],
-        backgroundColor: Color(getColorHexFromStr("#34495E")),
-            elevation: 0.0,
-          leading: IconButton(
-            icon: Icon(Icons.clear, color: Colors.grey),
-          ),
-          )
-        ),
+        )
+      ),
+      // // overflow menu
+      // PopupMenuButton<Choice>(
+      //   onSelected: _select,
+      //   itemBuilder: (BuildContext context) {
+      //     return choices.skip(2).map((Choice choice) {
+      //       return PopupMenuItem<Choice>(
+      //         value: choice,
+      //         child: Text(choice.title),
+      //       );
+      //     }).toList();
+      //   },
+      // ),
       body:
       OrientationBuilder(
         builder: (context, orientation) {
@@ -195,6 +228,46 @@ class _Pagetwo extends State<Pagetwo>{
           ),
         ],
       )
+    );
+  }
+}
+
+class Choice {
+  const Choice({this.title, this.icon});
+
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(title: 'Car', icon: Icons.directions_car),
+  const Choice(title: 'Bicycle', icon: Icons.directions_bike),
+  const Choice(title: 'Boat', icon: Icons.directions_boat),
+  const Choice(title: 'Bus', icon: Icons.directions_bus),
+  const Choice(title: 'Train', icon: Icons.directions_railway),
+  const Choice(title: 'Walk', icon: Icons.directions_walk),
+];
+
+class ChoiceCard extends StatelessWidget {
+  const ChoiceCard({Key key, this.choice}) : super(key: key);
+
+  final Choice choice;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextStyle textStyle = Theme.of(context).textTheme.display1;
+    return Card(
+      color: Colors.white,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(choice.icon, size: 128.0, color: textStyle.color),
+            Text(choice.title, style: textStyle),
+          ],
+        ),
+      ),
     );
   }
 }
