@@ -45,7 +45,54 @@ class _Pagetwo extends State<Pagetwo>{
       resizeToAvoidBottomPadding: false,
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      appBar: AppBar(title: Text("test")),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(110.0), // here the desired height
+          child: AppBar(
+            automaticallyImplyLeading: true,
+            title: const Text('Cohort 1',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                  fontFamily: 'Futura',
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.0,
+              ),
+            ),
+        actions: <Widget>[
+          // action button
+          IconButton(
+            icon: Icon(Icons.search, color: Colors.grey),
+            onPressed: null,//() {
+              //_select(choices[0]);
+            //},
+          ),
+          // action button
+          IconButton(
+            icon: Icon(Icons.more_vert, color: Colors.grey),
+            onPressed: null, //() {
+              //_select(choices[1]);
+            //},
+          ),
+          // // overflow menu
+          // PopupMenuButton<Choice>(
+          //   onSelected: _select,
+          //   itemBuilder: (BuildContext context) {
+          //     return choices.skip(2).map((Choice choice) {
+          //       return PopupMenuItem<Choice>(
+          //         value: choice,
+          //         child: Text(choice.title),
+          //       );
+          //     }).toList();
+          //   },
+          // ),
+        ],
+        backgroundColor: Color(getColorHexFromStr("#34495E")),
+            elevation: 0.0,
+          leading: IconButton(
+            icon: Icon(Icons.clear, color: Colors.grey),
+          ),
+          )
+        ),
       body:
       OrientationBuilder(
         builder: (context, orientation) {
