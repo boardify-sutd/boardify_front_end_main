@@ -45,7 +45,7 @@ class _Pagetwo extends State<Pagetwo>{
       resizeToAvoidBottomPadding: false,
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      //appBar: AppBar(title: Text("test")),
+      appBar: AppBar(title: Text("test")),
       body:
       OrientationBuilder(
         builder: (context, orientation) {
@@ -53,7 +53,7 @@ class _Pagetwo extends State<Pagetwo>{
             // Create a grid with 2 columns in portrait mode, or 3 columns in
             // landscape mode.
             crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-            // Generate 100 Widgets that display their index in the List
+            // Generate X Widgets that display their index in the List
             children: List.generate(sample_ls.length, (index) {
               return _cardBoard(context, index);
             }),

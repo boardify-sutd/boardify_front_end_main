@@ -91,32 +91,32 @@ class _HomePageState extends State<HomePage>{
         key: _scaffoldKey,
         backgroundColor: Colors.white,
         //appBar: _buildBar(context),
-        appBar: AppBar(
-          title: new TextField(
-            decoration: new InputDecoration(
-                hintText: 'Search...',
-                suffixIcon: _searchIcon,
-//                border: new OutlineInputBorder(
-//                  borderRadius: new BorderRadius.circular(25.0),
-////                  borderSide: new BorderSide(
-////                  ),
-//                ),
-            ),
-          ),
-          // See if we can somehow add a container here and a search bar inside
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-          leading: IconButton(
-            icon: Icon(Icons.menu, color: Colors.grey),
-            onPressed: () => _scaffoldKey.currentState.openDrawer(),
-          ),
-//          actions: <Widget>[
-//            IconButton(
-//              icon: _searchIcon,
-//            )
-//          ],
+         //appBar: callPage(_currentIndex),//AppBar(
+//           title: new TextField(
+//             decoration: new InputDecoration(
+//                 hintText: 'Search...',
+//                 suffixIcon: _searchIcon,
+// //                border: new OutlineInputBorder(
+// //                  borderRadius: new BorderRadius.circular(25.0),
+// ////                  borderSide: new BorderSide(
+// ////                  ),
+// //                ),
+//             ),
+//           ),
+//           // See if we can somehow add a container here and a search bar inside
+//             backgroundColor: Colors.transparent,
+//             elevation: 0.0,
+//           leading: IconButton(
+//             icon: Icon(Icons.menu, color: Colors.grey),
+//             onPressed: () => _scaffoldKey.currentState.openDrawer(),
+//           ),
+// //          actions: <Widget>[
+// //            IconButton(
+// //              icon: _searchIcon,
+// //            )
+// //          ],
 
-        ),
+//         ),
 
         drawer: new Drawer(
           child: new ListView(
@@ -201,105 +201,14 @@ class _HomePageState extends State<HomePage>{
                   )
               ),
               new Divider(),
-              new ListTile(
-                  dense: true,
-                  title: new Text("My Profile",
-                    style: TextStyle(
-                    color: Color(getColorHexFromStr("#606060")),
-                    fontFamily: 'QuickSand',),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  onTap: () => Navigator.of(context).push(new MaterialPageRoute
-                    (builder: (BuildContext context) =>
-                  new ProfilePage("Profile Page")))
-              ),// ListTile
-              new ListTile(
-                  dense: true,
-                  title: new Text("Notifications",
-                    style: TextStyle(
-                      color: Color(getColorHexFromStr("#606060")),
-                      fontFamily: 'QuickSand',),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  onTap: () {
-                    //Navigator.of(context).pop();
-                    Navigator.of(context).push(new MaterialPageRoute
-                      (builder: (BuildContext context) =>
-                    new ProfilePage("Notifications")));
-                  }
-              ),// ListTile
-              new ListTile(
-                  dense: true,
-                  title: new Text("Leaderboard",
-                    style: TextStyle(
-                      color: Color(getColorHexFromStr("#606060")),
-                      fontFamily: 'QuickSand',),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  onTap: () => Navigator.of(context).push(new MaterialPageRoute
-                    (builder: (BuildContext context) =>
-                  new ProfilePage("Leaderboard")))
-              ),// ListTile
-              new ListTile(
-                  dense: true,
-                  title: new Text("Recents",
-                    style: TextStyle(
-                      color: Color(getColorHexFromStr("#606060")),
-                      fontFamily: 'QuickSand',),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  onTap: () => Navigator.of(context).push(new MaterialPageRoute
-                    (builder: (BuildContext context) =>
-                  new ProfilePage("Recents")))
-              ),// ListTile
-              new ListTile(
-                  dense: true,
-                  title: new Text("Starred",
-                    style: TextStyle(
-                      color: Color(getColorHexFromStr("#606060")),
-                      fontFamily: 'QuickSand',),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  onTap: () => Navigator.of(context).push(new MaterialPageRoute
-                    (builder: (BuildContext context) =>
-                  new ProfilePage("Starred")))
-              ),// ListTile
-              new ListTile(
-                  dense: true,
-                  title: new Text("Settings",
-                    style: TextStyle(
-                      color: Color(getColorHexFromStr("#606060")),
-                      fontFamily: 'QuickSand',),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  onTap: () => Navigator.of(context).push(new MaterialPageRoute
-                    (builder: (BuildContext context) =>
-                  new ProfilePage("Settings")))
-              ),// ListTile
-              new ListTile(
-                  dense: true,
-                  title: new Text("Help",
-                    style: TextStyle(
-                      color: Color(getColorHexFromStr("#606060")),
-                      fontFamily: 'QuickSand',),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  onTap: () => Navigator.of(context).push(new MaterialPageRoute
-                    (builder: (BuildContext context) =>
-                  new ProfilePage("Help")))
-              ),// ListTile
-              new ListTile(
-                  dense: true,
-                  title: new Text("Logout",
-                    style: TextStyle(
-                      color: Color(getColorHexFromStr("#606060")),
-                      fontFamily: 'QuickSand',),
-                  ),
-                  contentPadding: EdgeInsets.only(left: 30.0),
-                  onTap: () => Navigator.of(context).push(new MaterialPageRoute
-                    (builder: (BuildContext context) =>
-                  new ProfilePage("Logout")))
-              ),// ListTile
+              _buildTile("My Profile","My Profile"),
+              _buildTile("Notifications","Notifications"),
+              _buildTile("Leaderboard","Leaderboard"),
+              _buildTile("Recents","Recents"),
+              _buildTile("Starred","Starred"),
+              _buildTile("Settings","Settings"),
+              _buildTile("Help","Help"),
+              _buildTile("Logout","Logout"),
               new Divider(),
               new ListTile(
                   dense: true,
@@ -312,9 +221,7 @@ class _HomePageState extends State<HomePage>{
             ], // widget[]
           ),  // listView
         ),  // Drawer
-        body: Container(
-          child: callPage(_currentIndex),
-        ),
+        body:  callPage(_currentIndex),
         bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             currentIndex: _currentIndex,
@@ -346,23 +253,38 @@ class _HomePageState extends State<HomePage>{
         ),  // bottomNavigationBar
     );  // Scaffold
   }
-  Widget _buildBar(BuildContext context) {
-    return new AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0.0,
-      centerTitle: true,
-      title: _appBarTitle,
-      leading: IconButton(
-        icon: Icon(Icons.menu, color: Colors.grey),
-        onPressed: () => _scaffoldKey.currentState.openDrawer(),
-      ),
-      actions: <Widget>[
-        IconButton(
-          icon: _searchIcon,
-        )
-      ],
-    );
+  // Widget _buildBar(BuildContext context) {
+  //   return new AppBar(
+  //     backgroundColor: Colors.transparent,
+  //     elevation: 0.0,
+  //     centerTitle: true,
+  //     title: _appBarTitle,
+  //     leading: IconButton(
+  //       icon: Icon(Icons.menu, color: Colors.grey),
+  //       onPressed: () => _scaffoldKey.currentState.openDrawer(),
+  //     ),
+  //     actions: <Widget>[
+  //       IconButton(
+  //         icon: _searchIcon,
+  //       )
+  //     ],
+  //   );
 
+  // }
+
+  Widget _buildTile(textLabel, newPage){
+    return new ListTile(
+      dense: true,
+      title: new Text(textLabel,
+        style: TextStyle(
+          color: Color(getColorHexFromStr("#606060")),
+          fontFamily: 'QuickSand',),
+      ),
+      contentPadding: EdgeInsets.only(left: 30.0),
+      onTap: () => Navigator.of(context).push(new MaterialPageRoute
+        (builder: (BuildContext context) =>
+      new ProfilePage(newPage)))
+    );// ListTile
   }
 
   Widget _buildList() {

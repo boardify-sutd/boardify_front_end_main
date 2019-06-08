@@ -51,34 +51,129 @@ class _Pageone extends State<Pageone>{
       resizeToAvoidBottomPadding: false,
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-//       appBar: //_buildBar(context),
-//       AppBar(
-//           title: new TextField(
-//             decoration: new InputDecoration(
-//                 hintText: 'Search...',
-//                 suffixIcon: _searchIcon,
-// //                border: new OutlineInputBorder(
-// //                  borderRadius: new BorderRadius.circular(25.0),
-// ////                  borderSide: new BorderSide(
-// ////                  ),
-// //                ),
-//             ),
-//           ),
-//           // See if we can somehow add a container here and a search bar inside
-//             backgroundColor: Colors.transparent,
-//             elevation: 0.0,
-//           leading: IconButton(
-//             icon: Icon(Icons.menu, color: Colors.grey),
-//             onPressed: () => _scaffoldKey.currentState.openDrawer(),
-//           ),
-// //          actions: <Widget>[
-// //            IconButton(
-// //              icon: _searchIcon,
-// //            )
-// //          ],
+      appBar: AppBar(
+          title: new TextField(
+            decoration: new InputDecoration(
+                hintText: 'Search...',
+                suffixIcon: _searchIcon,
+//                border: new OutlineInputBorder(
+//                  borderRadius: new BorderRadius.circular(25.0),
+////                  borderSide: new BorderSide(
+////                  ),
+//                ),
+            ),
+          ),
+          // See if we can somehow add a container here and a search bar inside
+            backgroundColor: Colors.transparent,
+            elevation: 0.0,
+          leading: IconButton(
+            icon: Icon(Icons.menu, color: Colors.grey),
+            onPressed: () => _scaffoldKey.currentState.openDrawer(),
+          ),
+      ),
+      drawer: new Drawer(
+          child: new ListView(
+            children: <Widget>[
+              Center(
+                  child: new Column(
+                    children: <Widget>[
+                      SizedBox(height:30),
+                      new DrawerHeader(
+                          child: new CircleAvatar(
+                            // backgroundImage: NetworkImage(currentProfilePic),
+                            backgroundImage: AssetImage("assets/aus.png"),
+                            backgroundColor: Colors.transparent,
+                            radius: 70.0,
+                          )
+                      ),
+                      new Text(
+                        "Sweatglenns",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Color(getColorHexFromStr("#606060")),
+                            fontSize: 20.0,
+                            fontFamily: 'QuickSand',
+                            fontWeight: FontWeight.bold),
+                            //color: Colors.black,
 
-//         ),
-
+                      ),
+                      SizedBox(height:20.0),
+                      new Row(
+                        children: <Widget>[
+                          SizedBox(width: 40.0),
+                          Column(
+                            children: <Widget>[
+                              new Text(
+                                "191",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(getColorHexFromStr("#606060")),
+                                    fontSize: 25.0,
+                                    fontFamily: 'QuickSand',
+                                    ),
+                                //color: Colors.black
+                              ),
+                              new Text(
+                                "UPVOTES",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(getColorHexFromStr("#606060")),
+                                    fontSize: 15.0,
+                                    fontFamily: 'QuickSand',
+                                    ),
+                                //color: Colors.black
+                              ),
+                            ],
+                          ),
+                          SizedBox(width:70.0),
+                          Column(
+                            children: <Widget>[
+                              new Text(
+                                "26",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Color(getColorHexFromStr("#606060")),
+                                    fontSize: 25.0,
+                                    fontFamily: 'QuickSand',
+                                    ),
+                              ),
+                              new Text(
+                                "DOWNVOTES",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(getColorHexFromStr("#606060")),
+                                  fontSize: 15.0,
+                                  fontFamily: 'QuickSand',
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+              ),
+              new Divider(),
+              _buildTile("My Profile","My Profile"),
+              _buildTile("Notifications","Notifications"),
+              _buildTile("Leaderboard","Leaderboard"),
+              _buildTile("Recents","Recents"),
+              _buildTile("Starred","Starred"),
+              _buildTile("Settings","Settings"),
+              _buildTile("Help","Help"),
+              _buildTile("Logout","Logout"),
+              new Divider(),
+              new ListTile(
+                  dense: true,
+                  title: new Text("Close"),
+                  trailing: new Icon(Icons.cancel),
+                  onTap: () {
+                    Navigator.of(context).pop();
+                  }
+              ),// ListTile
+            ], // widget[]
+          ),  // listView
+        ),
       body: //callPage(_currentIndex),
       ListView(
         //new Column(
@@ -87,9 +182,9 @@ class _Pageone extends State<Pageone>{
         children: <Widget>[
           SizedBox(height: 10.0),
           _buildRow(BuildContext, "My Classes", "See All", "blank"),
-          Container(
-            margin: EdgeInsets.symmetric(vertical:10.0),
-            height: 200,
+           Container(
+             margin: EdgeInsets.symmetric(vertical:10.0),
+             height: 200,
             // child: Row(children: <Widget>[
             //   new Expanded(
             //     child: _horiListView(context),
@@ -99,6 +194,7 @@ class _Pageone extends State<Pageone>{
             // ),
             // child: Expanded(
             //     child: _horiListView(context),
+            //_horiListView(context),
             //   //child: _horiListView(context),
             // ),
             child: ListView(
@@ -113,7 +209,7 @@ class _Pageone extends State<Pageone>{
                 _buildCard(context, test_ls[2][0], test_ls[2][1], test_ls[2][2]),
               ],
             ), 
-          ),  // Container for slidy
+           ),  // Container for slidy
           SizedBox(height: 10.0),
           Divider(
             height:20.0,
@@ -333,9 +429,24 @@ class _Pageone extends State<Pageone>{
             ),
         ],
       ),
-     // ),
     );  // Scaffold
   }   
+  Widget _buildTile(textLabel, newPage){
+    return new ListTile(
+      dense: true,
+      title: new Text(textLabel,
+        style: TextStyle(
+          color: Color(getColorHexFromStr("#606060")),
+          fontFamily: 'QuickSand',),
+      ),
+      contentPadding: EdgeInsets.only(left: 30.0),
+      onTap: () => Navigator.of(context).push(new MaterialPageRoute
+        (builder: (BuildContext context) =>
+      new ProfilePage(newPage)))
+    );// ListTile
+  }
+
+  
   Widget _buildCard(BuildContext context, firstText, subText, imagePath){
     return new 
     Card(
