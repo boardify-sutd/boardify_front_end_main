@@ -1,3 +1,4 @@
+import 'package:boardify_main/pages/week_nav.dart';
 import 'package:flutter/material.dart';
 import './week.dart'; 
 import './page1.dart';
@@ -5,7 +6,7 @@ import './page2.dart';
 import './page3.dart';
 import './page4.dart';
 import './board.dart';
-
+import './week_nav.dart';
 class Subjects extends StatefulWidget{
   @override
   _Subjects createState() => _Subjects();
@@ -162,35 +163,35 @@ class _Subjects extends State<Subjects>{
           
         },
       ),
-      bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: _currentIndex,
-            onTap: (value){
-              _currentIndex=value;
-              setState(() {
+      // bottomNavigationBar: BottomNavigationBar(
+      //       type: BottomNavigationBarType.fixed,
+      //       currentIndex: _currentIndex,
+      //       onTap: (value){
+      //         _currentIndex=value;
+      //         setState(() {
 
-              });
-            },
-            // List of bottom nav bar items
-            items:[
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  title: Text('Home')
-              ),  // BottomNavigationBarItem
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.star),
-                  title: Text('Starred')
-              ),  // BottomNavigationBarItem
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.email),
-                  title: Text('Messages')
-              ),  // BottomNavigationBarItem
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  title: Text('Settings')
-              ),  // BottomNavigationBarItem
-            ]  // items
-        ), 
+      //         });
+      //       },
+      //       // List of bottom nav bar items
+      //       items:[
+      //         BottomNavigationBarItem(
+      //             icon: Icon(Icons.home),
+      //             title: Text('Home')
+      //         ),  // BottomNavigationBarItem
+      //         BottomNavigationBarItem(
+      //             icon: Icon(Icons.star),
+      //             title: Text('Starred')
+      //         ),  // BottomNavigationBarItem
+      //         BottomNavigationBarItem(
+      //             icon: Icon(Icons.email),
+      //             title: Text('Messages')
+      //         ),  // BottomNavigationBarItem
+      //         BottomNavigationBarItem(
+      //             icon: Icon(Icons.person),
+      //             title: Text('Settings')
+      //         ),  // BottomNavigationBarItem
+      //       ]  // items
+      //   ), 
     );  // Scaffold
   }
   Widget week_card(week){
@@ -218,7 +219,7 @@ class _Subjects extends State<Subjects>{
       onTap: () {
           Navigator.of(context).push(new MaterialPageRoute
         (builder: (BuildContext context) =>
-      new Week()));
+      new WeekNav()));
     }, 
     ),
     alignment: Alignment(0.0, 0.0),

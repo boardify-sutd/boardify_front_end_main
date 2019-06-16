@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import './my_profile_page.dart';
 import './board.dart';
 
-class Pagetwo extends StatefulWidget{
+class Boardview extends StatefulWidget{
   @override
-  _Pagetwo createState() => _Pagetwo();
+  _Boardview createState() => _Boardview();
 }
 
-class _Pagetwo extends State<Pagetwo>{
+class _Boardview extends State<Boardview>{
 
   Choice _selectedChoice = choices[0]; // The app's "state".
 

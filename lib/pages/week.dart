@@ -1,5 +1,6 @@
+import 'package:boardify_main/pages/boardview_nav.dart';
 import 'package:flutter/material.dart';
-import './page2.dart';
+import './boardview_nav.dart';
 
 class Week extends StatefulWidget{
   @override
@@ -153,7 +154,7 @@ class _Week extends State<Week>{
       onTap: () { 
         Navigator.of(context).push(new MaterialPageRoute
         (builder: (BuildContext context) =>
-      new Pagetwo()));
+      new BoardviewNav()));
       }
     ),
     alignment: Alignment(0.0, 0.0),

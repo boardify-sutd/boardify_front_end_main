@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './my_profile_page.dart';
 import './subjects.dart';
-
+import './subjects_nav.dart';
 
 class Pageone extends StatefulWidget{
   @override
@@ -14,6 +14,15 @@ class _Pageone extends State<Pageone>{
         ["Chemistry", "10 Boards", "assets/chem.jpg"],
         ["Biology", "40 Boards", "assets/bio.jpg"],
       ];
+    
+  List recents_ls = [
+    ["Chemistry 11/5/19 13:01","assets/board2.png"],
+    ["Physics 23/1/19 08:51","assets/board1.png"],
+    ["Chemistry 11/5/19 13:01","assets/board2.png"],
+    ["Physics 23/1/19 08:51","assets/board1.png"],
+    ["Chemistry 11/5/19 13:01","assets/board2.png"],
+    ["Physics 23/1/19 08:51","assets/board1.png"],
+  ];
   List subjects = ["physics","math","econs","chemistry"];//new List();
   List filterSubjects = ["physics","math","econs","chemistry"];// new List();
 
@@ -176,262 +185,103 @@ drawer: new Drawer(
             ], // widget[]
           ),  // listView
         ),
-      body: //callPage(_currentIndex),
-      ListView(
-        //new Column(
-        //mainAxisSize: MainAxisSize.max,
-        //padding: EdgeInsets.only(top:80.0),
-        children: <Widget>[
-          SizedBox(height: 10.0),
-          _buildRow(BuildContext, "My Classes", "See All", "blank"),
-           Container(
-             margin: EdgeInsets.symmetric(vertical:10.0),
-             height: 200,
-            // child: Row(children: <Widget>[
-            //   new Expanded(
-            //     child: _horiListView(context),
-            //   //child: _horiListView(context),
-            // ),
-            // ],
-            // ),
-            // child: Expanded(
-            //     child: _horiListView(context),
-            //_horiListView(context),
-            //   //child: _horiListView(context),
-            // ),
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              // itemCount: test_ls.length,
-              // itemBuilder: (context, index) {
-              // return _buildCard(context, test_ls[index][0], test_ls[index][1], test_ls[index][0]);        
-              //   },
-              children: <Widget>[
-                _buildCard(context, test_ls[0][0], test_ls[0][1], test_ls[0][2]),
-                _buildCard(context, test_ls[1][0], test_ls[1][1], test_ls[1][2]),
-                _buildCard(context, test_ls[2][0], test_ls[2][1], test_ls[2][2]),
-              ],
-            ), 
-           ),  // Container for slidy
-          SizedBox(height: 10.0),
-          Divider(
-            height:20.0,
-            color: Colors.black,
-            //indent: 10.0,  // for now cannot indent right
-          ),
-          _buildRow(BuildContext, "Recently Viewed", "See All", "blank"),
-            Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Container(
-                      //color: Colors.transparent,
-                      width: 195.0,
-                      decoration: new BoxDecoration(
-                        //borderRadius: new BorderRadius.circular(30.0),
-                      ),
-                      child:Card(
-                          elevation: 0.0,
-                          //color: Color(getColorHexFromStr("#C5B7E8")),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(height: 14.0),
-                              Container(
-                                height: 130.0,
-                                width: 180.0,
-                                decoration: new BoxDecoration(
-                                  borderRadius: new BorderRadius.circular(10.0),
-                                  border: Border.all(
-                                      width: 10, //
-                                      color: Color(getColorHexFromStr("#D7D7D7"))
-                                  ),
-                                  image: DecorationImage(
-                                    image: new AssetImage("assets/board1.png"),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                ),
-                              ),
-                              //SizedBox(height: 10.0),
-                              new ListTile(
-                                dense: true,
-                                title: Text("Physics 23/1/19 08:51",
-                                  style: TextStyle(
-                                    color: Color(getColorHexFromStr("#606060")),
-                                    fontSize: 10.0,
-                                    fontFamily: 'QuickSand',
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                trailing: Icon(Icons.more_vert, color: Colors.grey),
-                              ),
-                            ],
-                          )
-                      ),
-                    ), // First Card
-                    Container(
-                      //color: Colors.transparent,
-                      width: 195.0,
-                      decoration: new BoxDecoration(
-                        //borderRadius: new BorderRadius.circular(30.0),
-                      ),
-                      child:Card(
-                          elevation: 0.0,
-                          //color: Color(getColorHexFromStr("#C5B7E8")),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(height: 14.0),
-                              Container(
-                                height: 130.0,
-                                width: 180.0,
-                                decoration: new BoxDecoration(
-                                  borderRadius: new BorderRadius.circular(10.0),
-                                  border: Border.all(
-                                      width: 10, //
-                                      color: Color(getColorHexFromStr("#D7D7D7"))
-                                  ),
-                                  image: DecorationImage(
-                                    //                            image: new AssetImage(
-                                    //                                'assets/assets/alucard.jpg'),
-                                    //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                    image: new AssetImage("assets/board2.png"),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                ),
-                              ),
-                              //SizedBox(height: 10.0),
-                              new ListTile(
-                                dense: true,
-                                title: Text("Chemistry 11/5/19 13:01",
-                                  style: TextStyle(
-                                    color: Color(getColorHexFromStr("#606060")),
-                                    fontSize: 10.0,
-                                    fontFamily: 'QuickSand',
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                trailing: Icon(Icons.more_vert, color: Colors.grey),
-                              ),
-                            ],
-                          )
-                      ),
-                    ), // Second Card
-                  ],
-                ), // First Row
-                Row(
-                  children: <Widget>[
-                    Container(
-                      //color: Colors.transparent,
-                      width: 195.0,
-                      decoration: new BoxDecoration(
-                        //borderRadius: new BorderRadius.circular(30.0),
-                      ),
-                      child:Card(
-                          elevation: 0.0,
-                          //color: Color(getColorHexFromStr("#C5B7E8")),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(height: 14.0),
-                              Container(
-                                height: 130.0,
-                                width: 180.0,
-                                decoration: new BoxDecoration(
-                                  borderRadius: new BorderRadius.circular(10.0),
-                                  border: Border.all(
-                                      width: 10, //
-                                      color: Color(getColorHexFromStr("#D7D7D7"))
-                                  ),
-                                  image: DecorationImage(
-                                    image: new AssetImage("assets/board1.png"),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                ),
-                              ),
-                              //SizedBox(height: 10.0),
-                              new ListTile(
-                                dense: true,
-                                title: Text("Physics 23/1/19 08:51",
-                                  style: TextStyle(
-                                    color: Color(getColorHexFromStr("#606060")),
-                                    fontSize: 10.0,
-                                    fontFamily: 'QuickSand',
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                trailing: Icon(Icons.more_vert, color: Colors.grey),
-                              ),
-                            ],
-                          )
-                      ),
-                    ), // First Card
-                    Container(
-                      //color: Colors.transparent,
-                      width: 195.0,
-                      decoration: new BoxDecoration(
-                        //borderRadius: new BorderRadius.circular(30.0),
-                      ),
-                      child:Card(
-                          elevation: 0.0,
-                          //color: Color(getColorHexFromStr("#C5B7E8")),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SizedBox(height: 14.0),
-                              Container(
-                                height: 130.0,
-                                width: 180.0,
-                                decoration: new BoxDecoration(
-                                  borderRadius: new BorderRadius.circular(10.0),
-                                  border: Border.all(
-                                      width: 10, //
-                                      color: Color(getColorHexFromStr("#D7D7D7"))
-                                  ),
-                                  image: DecorationImage(
-                                    //                            image: new AssetImage(
-                                    //                                'assets/assets/alucard.jpg'),
-                                    //image: new NetworkImage("https://images.unsplash.com/photo-1503875154399-95d2b151e3b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"),
-                                    image: new AssetImage("assets/board2.png"),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: BoxShape.rectangle,
-                                ),
-                              ),
-                              //SizedBox(height: 10.0),
-                              new ListTile(
-                                dense: true,
-                                title: Text("Chemistry 11/5/19 13:01",
-                                  style: TextStyle(
-                                    color: Color(getColorHexFromStr("#606060")),
-                                    fontSize: 10.0,
-                                    fontFamily: 'QuickSand',
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                trailing: Icon(Icons.more_vert, color: Colors.grey),
-                              ),
-                            ],
-                          )
-                      ),
-                    ), // Second Card
-                  ],
-                ), // Second Row
-              ],
+      body: 
+      Container(
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  SizedBox(height: 10.0),
+                  _buildRow(BuildContext, "My Classes", "See All", "blank"),
+                ]
+              ),
             ),
-        ],
-      ),
-    );  // Scaffold
+            SliverToBoxAdapter(
+              child: Container(
+                height: 200.0,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: test_ls.length,
+                  itemBuilder: (context, index) {
+                   return _buildCard(context, test_ls[index][0], test_ls[index][1], test_ls[index][2]);
+                  },
+                ),
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  SizedBox(height: 10.0),
+                  Divider(
+                    height:20.0,
+                    color: Colors.black,
+                  ),
+                  _buildRow(BuildContext, "Recently Viewed", "See All", "blank"),
+                ]
+              ),
+            ),
+            SliverGrid(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+                crossAxisCount: 2,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) => 
+                _cardBoardMain(context, index),
+                  childCount: recents_ls.length,
+              ),
+            ),
+            // SliverList(
+            //   delegate: SliverChildBuilderDelegate(
+            //     (BuildContext context, int index) =>
+            //     _buildCard(context, test_ls[index][0], test_ls[index][1], test_ls[index][2]),
+            //     childCount: test_ls.length,
+            //   ),
+            // )
+          ],
+        ),
+      )
+      // ListView(
+      //   children: <Widget>[
+      //     SizedBox(height: 10.0),
+      //     _buildRow(BuildContext, "My Classes", "See All", "blank"),
+      //      Container(
+      //        margin: EdgeInsets.symmetric(vertical:10.0),
+      //        height: 200,
+      //       child: ListView(
+      //         scrollDirection: Axis.horizontal,
+      //         children: <Widget>[
+      //           _buildCard(context, test_ls[0][0], test_ls[0][1], test_ls[0][2]),
+      //           _buildCard(context, test_ls[1][0], test_ls[1][1], test_ls[1][2]),
+      //           _buildCard(context, test_ls[2][0], test_ls[2][1], test_ls[2][2]),
+      //         ],
+      //       ), 
+      //      ),  
+      //     SizedBox(height: 10.0),
+      //     Divider(
+      //       height:20.0,
+      //       color: Colors.black,
+      //     ),
+      //     _buildRow(BuildContext, "Recently Viewed", "See All", "blank"),
+      //       Column(
+      //         children: <Widget>[
+      //           Row(
+      //             children: <Widget>[
+      //               _cardBoardMain(context, 0),
+      //               _cardBoardMain(context, 1),
+      //             ],
+      //           ),
+      //           Row(
+      //             children: <Widget>[
+      //               _cardBoardMain(context, 1),
+      //             ],
+      //           ),
+      //         ],
+      //       ),
+      //   ],
+      // ),
+    ); 
   }   
   Widget _buildTile(textLabel, newPage){
     return new ListTile(
@@ -446,9 +296,7 @@ drawer: new Drawer(
         (builder: (BuildContext context) =>
       new ProfilePage(newPage)))
     );// ListTile
-  }
-
-  
+  }  
   Widget _buildCard(BuildContext context, firstText, subText, imagePath){
     return new 
     Card(
@@ -460,7 +308,7 @@ drawer: new Drawer(
         onTap: () {
           Navigator.of(context).push(new MaterialPageRoute
         (builder: (BuildContext context) =>
-          new Subjects()));
+          new SubjectsNav()));
         },
       child: Container(
         height: 190.0,
@@ -560,6 +408,56 @@ drawer: new Drawer(
       itemBuilder: (context, index) {
       return _buildCard(context, test_ls[index][0], test_ls[index][1], test_ls[index][0]);        
         },
+    );
+  }
+  Widget _cardBoardMain(BuildContext context, index){
+    return Card(
+      elevation: 0.0,
+      //color: Color(getColorHexFromStr("#C5B7E8")),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Column(
+        //mainAxisAlignment: MainAxisAlignment.center,
+        //crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(height: 14.0),
+          Container(
+            height: 126.0,
+            width: 180.0,
+            decoration: new BoxDecoration(
+              borderRadius: new BorderRadius.circular(10.0),
+              border: Border.all(
+                  width: 10, //
+                  color: Color(getColorHexFromStr("#D7D7D7"))
+              ),
+              image: DecorationImage(
+                image: new AssetImage(recents_ls[index][1]),
+                fit: BoxFit.fill,
+              ),
+              shape: BoxShape.rectangle,
+            ),
+          ),
+          new SizedBox(height:10.0),
+          new Row(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            //crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              //new SizedBox(width: 45,),
+              new Text(recents_ls[index][0],
+              style: TextStyle(
+                color: Color(getColorHexFromStr("#606060")),
+                fontSize: 10.0,
+                fontFamily: 'QuickSand',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            new SizedBox(width: 25,),
+            new Icon(Icons.more_vert, color: Colors.grey)
+              ],
+          ),
+        ],
+      )
     );
   }
 }
