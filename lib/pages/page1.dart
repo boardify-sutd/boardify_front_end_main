@@ -1,3 +1,4 @@
+import 'package:boardify_main/pages/my_profile_page_nav.dart';
 import 'package:flutter/material.dart';
 import './my_profile_page.dart';
 import './subjects.dart';
@@ -165,7 +166,7 @@ drawer: new Drawer(
                   )
               ),
               new Divider(),
-              _buildTile("My Profile","My Profile"),
+              _buildTile("My Profile","Profile"),
               _buildTile("Notifications","Notifications"),
               _buildTile("Leaderboard","Leaderboard"),
               _buildTile("Recents","Recents"),
@@ -294,7 +295,7 @@ drawer: new Drawer(
       contentPadding: EdgeInsets.only(left: 30.0),
       onTap: () => Navigator.of(context).push(new MaterialPageRoute
         (builder: (BuildContext context) =>
-      new ProfilePage(newPage)))
+      new ProfilePageNav(newPage)))
     );// ListTile
   }  
   Widget _buildCard(BuildContext context, firstText, subText, imagePath){
