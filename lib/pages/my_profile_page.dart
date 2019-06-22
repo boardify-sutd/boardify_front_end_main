@@ -171,12 +171,118 @@ class _ProfilePage extends State<ProfilePage>{
                 ),
               ),
             ),
+            SizedBox(height: 20.0),
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width/3,
+                  child: _buildVotes("191", "UPVOTES")
+                ),
+                SizedBox(width:MediaQuery.of(context).size.width/10),
+                Container(
+                  width: MediaQuery.of(context).size.width/3,
+                  child: _buildVotes("26", "DOWNVOTES")
+                ),
+              ],
+            ),
+            SizedBox(height:10.0),
+            new Divider(
+              color: Colors.grey,
+              height: 30.0,
+              indent: 20.0,
+            ),
+            new Container(
+              width: MediaQuery.of(context).size.width/1.3,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  _nameDisp("First Name", "Glenn", 80.0),
+                  SizedBox(width: MediaQuery.of(context).size.width/3),
+                  _nameDisp("Last Name", "Chia", 80.0),
+                ],
+              ),
+            ),
+            new Divider(
+              color: Colors.grey,
+              height: 30.0,
+              indent: 20.0,
+            ),
+            new Container(
+              width: MediaQuery.of(context).size.width/1.3,
+              child: _nameDisp("Class", "F01", 320.0),
+            )
             
           ],
         ),
       )
     );
   }
+  Widget _buildVotes(voteCount, voteType){
+    return new Column(
+      children: <Widget>[
+        new Text(
+          voteCount,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Color(getColorHexFromStr("#606060")),
+              fontSize: 20.0,
+              fontFamily: 'QuickSand',
+              ),
+          //color: Colors.black
+        ),
+        new Text(
+          voteType,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Color(getColorHexFromStr("#606060")),
+              fontSize: 13.0,
+              fontFamily: 'QuickSand',
+              ),
+          //color: Colors.black
+        ),
+      ],
+    );
+  } 
+Widget _nameDisp(labelText, nameText, width){
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
+      new Text(
+        labelText,
+        textAlign: TextAlign.left,
+        style:TextStyle(
+          color: Color(getColorHexFromStr("#A6A6A6")),
+          fontSize: 13.0,
+        )
+      ),
+      SizedBox(
+        width:width, 
+        child: TextField(
+          autofocus: true,
+          style:TextStyle(
+            color: Color(getColorHexFromStr("#606060")),
+            fontSize: 13.0,
+          ),
+          decoration: InputDecoration(
+          border: UnderlineInputBorder(borderSide: BorderSide(color: Color(getColorHexFromStr("#A6A6A6")))),
+          //focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.cyan)),
+          hintText: nameText
+          ),
+        ),
+      ),
+        
+      //   // nameText,
+      //   // textAlign: TextAlign.left,
+      //   // style:TextStyle(
+      //   //   color: Color(getColorHexFromStr("#606060")),
+      //   //   fontSize: 13.0,
+      //   // )
+      //),
+      new Divider(),
+    ],
+  );
+}
 }
 class Choice {
   const Choice({this.title, this.icon});
