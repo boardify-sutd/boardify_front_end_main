@@ -46,32 +46,98 @@ class _Comments extends State<Comments>{
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
         
-      body:
-      Container(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildBuilderDelegate((BuildContext context, int index){
-                return _indivComments(notif_ls[index][0], notif_ls[index][1], notif_ls[index][2], notif_ls[index][3], notif_ls[index][4]);
-              },
-              childCount: notif_ls.length,
-              ),
-            )
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: SizedBox(
+              height: 150.0,
+              child: new ListView.builder(
+                itemCount: notif_ls.length,
+                itemBuilder: (BuildContext ctxt, int index){
+                  return _indivComments(notif_ls[index][0], notif_ls[index][1], notif_ls[index][2], notif_ls[index][3], notif_ls[index][4], index);
+                },
+              )
+            ),
+          ),
+          new Divider(
+              color: Colors.black,
+              height: 30.0,
+              //indent: 20.0,
+            ),
+          new Container(
+            margin: const EdgeInsets.only(left: 10.0, bottom: 10.0),
+            child: Row(
+              children: <Widget>[
+                new CircleAvatar(
+                  backgroundImage: AssetImage("assets/aus.png"),
+                  radius: 25.0,
+                ),
+                new SizedBox(width: 10.0,),
+               new Flexible(
+                  child: new TextFormField(
+                   decoration: InputDecoration(
+                    hintText: "Comment...",
+                    hintStyle: TextStyle(
+                      color: Colors.grey[400],
+                      fontSize: 20.0,
+                      fontFamily: 'Futura',
+                    ),
+                  ),
+                  ),
+                ),
+                new FlatButton(
+                  onPressed: (){
+                    notif_ls.add(["assets/physics.jpg", "Sean", "He is an all star in my eyes", false, 3]);
+                  },
+                  child: Text("Post",
+                    style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 20.0,
+                        fontFamily: 'Futura'
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       )
+
+      // Container(
+      //   child: CustomScrollView(
+      //     slivers: <Widget>[
+      //       SliverList(
+      //         delegate: SliverChildBuilderDelegate((BuildContext context, int index){
+      //           return _indivComments(notif_ls[index][0], notif_ls[index][1], notif_ls[index][2], notif_ls[index][3], notif_ls[index][4]);
+      //         },
+      //         childCount: notif_ls.length,
+      //         ),
+      //       )
+      //     ],
+      //   ),
+      // )
     );
   }
   
-  Widget _indivComments(dp, name, text, likeStatus,likeCount){
+  Widget _indivComments(dp, name, text, likeStatus,likeCount, index){
      bool _likeStatus = likeStatus;
+
+    // void _toggleFavorite() {
+    //   setState(() {
+    //     if (_likeStatus) {
+    //       _likeStatus = false;
+    //     } else {
+    //       _likeStatus = true;
+    //     }
+    //   });
+    // }
 
     void _toggleFavorite() {
       setState(() {
-        if (_likeStatus) {
-          _likeStatus = false;
+        if (notif_ls[index][3]) {
+          notif_ls[index][3] = false;
         } else {
-          _likeStatus = true;
+          notif_ls[index][3] = true;
         }
       });
     }
@@ -142,7 +208,7 @@ class _Comments extends State<Comments>{
         ),
         //SizedBox(width: MediaQuery.of(context).size.width/50,),
         IconButton(
-            icon: (_likeStatus ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
+            icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
             color: Colors.red[500],
             onPressed: _toggleFavorite,
         ),
