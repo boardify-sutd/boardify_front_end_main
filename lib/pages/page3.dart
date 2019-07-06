@@ -17,7 +17,8 @@ class _Notifications extends State<Notifications>{
   Choice _selectedChoice = choices[0]; // The app's "state".
   List<String> litems = ["Cohort 1", "Cohort 2", "Lecture"];
   List notif_ls = [["assets/aus.png", "pencillead", "mentioned you in a comment: @Glenn you are so cool", "assets/board1.png"], 
-                    ["assets/physics.jpg", "Physics - Week 1 - Cohort 1", "was updated", "assets/board1.png"]
+                    ["assets/physics.jpg", "Physics - Week 1 - Cohort 1", "was updated", "assets/board1.png"],
+                    ["assets/physics.jpg", "Physics - Week 1 - Cohort 1", "was updated", ""],
                     ];
   // final String pageText;
 

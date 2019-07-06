@@ -259,7 +259,7 @@ Widget _nameDisp(labelText, nameText, width){
       SizedBox(
         width:width, 
         child: TextField(
-          autofocus: true,
+          autofocus: false,
           style:TextStyle(
             color: Color(getColorHexFromStr("#606060")),
             fontSize: 13.0,

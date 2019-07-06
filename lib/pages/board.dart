@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './my_profile_page.dart';
+import './tabview.dart';
+
 
 class Board extends StatefulWidget{
   @override
@@ -165,14 +166,33 @@ class _Board extends State<Board>{
                     color: Colors.white,
                   ),
                   children: <TextSpan>[
-                    new TextSpan(text: 'Claire Tan  ', style: new TextStyle(fontWeight: FontWeight.bold)),
+                    new TextSpan(text: 'Claire Tan', style: new TextStyle(fontWeight: FontWeight.bold)),
+                    new TextSpan(text: ' '),
                     new TextSpan(text: 'Lionell is so cool'),
                     //new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
             ],
-          )
+          ),
+          Row(
+            children: <Widget>[
+              FlatButton(
+                padding: EdgeInsets.all(10.0),
+                onPressed: () => Navigator.push(context, new MaterialPageRoute
+                (builder: (BuildContext context) => new Tabview())),
+                child: Text(
+                  "View all comments",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.0,
+                      fontFamily: 'Futura',
+                      fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+            ],
+          )  
         ],
       ),
     );  // Scaffold

@@ -30,7 +30,7 @@ class _BoardviewNav extends State<BoardviewNav>{
       case 1:
         return Pagetwo();
       case 2:
-        return Pagethree();
+        return Notifications();
       case 3:
         return Boardview();//Pagefour();
       case 4:

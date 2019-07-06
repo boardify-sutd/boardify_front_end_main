@@ -31,7 +31,7 @@ class _SubjectsNav extends State<SubjectsNav>{
       case 1:
         return Pagetwo();
       case 2:
-        return Pagethree();
+        return Pagetwo();
       case 3:
         return Board();//Pagefour();
       case 4:

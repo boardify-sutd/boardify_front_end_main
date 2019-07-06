@@ -37,7 +37,7 @@ class _ProfilePageNav extends State<ProfilePageNav>{
       case 1:
         return Pagetwo();
       case 2:
-        return Pagethree();
+        return Notifications();
       case 3:
         return Board();//Pagefour();
       case 4:
