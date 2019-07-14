@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import './my_profile_page.dart';
 import './subjects.dart';
 import './subjects_nav.dart';
+import './see_all_subjects_nav.dart';
 
 class Pageone extends StatefulWidget{
   @override
@@ -194,7 +195,7 @@ drawer: new Drawer(
               delegate: SliverChildListDelegate(
                 [
                   SizedBox(height: 10.0),
-                  _buildRow(BuildContext, "My Classes", "See All", "blank"),
+                  _buildRow(context, "My Classes", "See All", "blank"),
                 ]
               ),
             ),
@@ -218,7 +219,7 @@ drawer: new Drawer(
                     height:20.0,
                     color: Colors.black,
                   ),
-                  _buildRow(BuildContext, "Recently Viewed", "See All", "blank"),
+                  _buildRow(context, "Recently Viewed", "See All", "blank"),
                 ]
               ),
             ),
@@ -362,7 +363,7 @@ drawer: new Drawer(
       ),
     );
   }  // widget
-  Widget _buildRow(BuildContext, firstText, secondText, linkPage){
+  Widget _buildRow(BuildContext context, firstText, secondText, linkPage){
     return new
     Row(
       //mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -383,7 +384,8 @@ drawer: new Drawer(
         SizedBox(width:MediaQuery.of(context).size.width/6),
         FlatButton(
             color: Colors.transparent,
-            onPressed: null,
+            onPressed: () => Navigator.push(context, new MaterialPageRoute
+                (builder: (BuildContext context) => new SeeAllSubNav("REPLACE THIS WITH USER ID"))),
             child: Row(
               children: <Widget>[
                 Text(
