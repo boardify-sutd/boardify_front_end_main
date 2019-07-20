@@ -62,7 +62,7 @@ class _Notifications extends State<Notifications>{
         preferredSize: Size.fromHeight(100.0),
         child: AppBar(
           backgroundColor: Color(getColorHexFromStr("#34495E")),
-          automaticallyImplyLeading: false, // hides leading widget
+          //automaticallyImplyLeading: false, // hides leading widget
           flexibleSpace: new Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -70,13 +70,8 @@ class _Notifications extends State<Notifications>{
               children: <Widget>[
                 SizedBox(height:20.0),
                 Row(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.clear, color: Colors.grey),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),  
+                  children: <Widget>[ 
+                    SizedBox(width: MediaQuery.of(context).size.width/20,),
                     Container(
                       width: MediaQuery.of(context).size.width/2,
                       child: Text("Notifications",

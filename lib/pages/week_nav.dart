@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './week.dart'; 
 import './page1.dart';
 import './page2.dart';
-import './page3.dart';
+import './notifications.dart';
 import './page4.dart';
 import './board.dart';
 

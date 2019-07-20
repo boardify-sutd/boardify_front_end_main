@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import './my_profile_page.dart';
 import './page1.dart';
 import './page2.dart';
-import './page3.dart';
+import './notifications.dart';
 import './page4.dart';
 import './board.dart';
 import './subjects.dart';
 import './week.dart'; 
+import './see_all_subjects.dart';
 
 
 class HomePage extends StatefulWidget{
@@ -54,9 +55,9 @@ class _HomePageState extends State<HomePage>{
       case 1:
         return Pagetwo();
       case 2:
-        return Subjects();
+        return Notifications();
       case 3:
-        return Board();//Pagefour();
+        return SeeAllSubjects();//Board();//Pagefour();
         break;
       default:
         return Pageone();
