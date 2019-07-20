@@ -79,6 +79,7 @@ class _SeeAllSubjects extends State<SeeAllSubjects>{
                         Navigator.pop(context);
                       },
                     ),  
+                    SizedBox(width: MediaQuery.of(context).size.width/4,),
                     Container(
                       width: MediaQuery.of(context).size.width/2,
                       child: Text("Classes",
@@ -91,7 +92,6 @@ class _SeeAllSubjects extends State<SeeAllSubjects>{
                         ),
                       ),
                     ),
-                    SizedBox(width: MediaQuery.of(context).size.width/4,),
                     PopupMenuButton<Choice>(
                       icon: new Icon(Icons.more_vert, color: Colors.grey),
                       onSelected: _select,
@@ -115,58 +115,75 @@ class _SeeAllSubjects extends State<SeeAllSubjects>{
       Container(
         child: CustomScrollView(
           slivers: <Widget>[
-            Row(
-              children: <Widget>[
-                Switch(
-                  value: isSwitched,
-                  onChanged: (value) {
-                    setState(() {
-                      isSwitched = value;
-                    });
-                  },
-                  activeTrackColor: Colors.lightGreenAccent, 
-                  activeColor: Colors.green,
-                ),
-                SizedBox(width: MediaQuery.of(context).size.width/27),
-                new Container(
-                  margin: new EdgeInsets.only(top: 2.0),
-                  decoration: new BoxDecoration(
-                    color: Color(getColorHexFromStr("#D7D7D7")),
-                    borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  Row(
+                    children: <Widget>[
+                      SizedBox(
+                        width: 80.0,
+                        height: 50.0,
+                        child: Switch(
+                          value: isSwitched,
+                          onChanged: (value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          },
+                          activeTrackColor: Colors.blueGrey, 
+                          activeColor: Colors.blue,
+                          activeThumbImage: Image.asset(
+                              'assets/focused.png'
+                          ).image,
+                          inactiveThumbImage: Image.asset(
+                              'assets/all.png'
+                          ).image,
+                        ),
+                      ),
+                      SizedBox(width: MediaQuery.of(context).size.width/2),
+                      new Container(
+                        margin: new EdgeInsets.only(top: 2.0),
+                        decoration: new BoxDecoration(
+                          color: Color(getColorHexFromStr("#D7D7D7")),
+                          borderRadius: new BorderRadius.all(new Radius.circular(10.0)),
+                        ),
+                        child: 
+                          DropdownButton<String>(
+                            isDense: true,
+                            value: dropdownValue,
+                            onChanged: (String newValue) {
+                              setState(() {
+                                dropdownValue = newValue;
+                              });
+                            },
+                            items: <String>['Date', 'Likes', 'Comments']
+                              .map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Row(
+                                    children: <Widget>[
+                                      SizedBox(width:8.0),
+                                      Text(value,
+                                        style: TextStyle(
+                                          color: Color(getColorHexFromStr("#606060")),
+                                          fontSize: 15.0,
+                                          fontFamily: 'Futura',
+                                          //fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                  ],
+                                )
+                              );
+                            })
+                            .toList(),
+                            //hint: Text('Sort By'),
+                        ),
+                      ),
+                    ],
                   ),
-                  child: 
-                    DropdownButton<String>(
-                      isDense: true,
-                      value: dropdownValue,
-                      onChanged: (String newValue) {
-                        setState(() {
-                          dropdownValue = newValue;
-                        });
-                      },
-                      items: <String>['Date', 'Likes', 'Comments']
-                        .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Row(
-                              children: <Widget>[
-                                SizedBox(width:8.0),
-                                Text(value,
-                                  style: TextStyle(
-                                    color: Color(getColorHexFromStr("#606060")),
-                                    fontSize: 15.0,
-                                    fontFamily: 'Futura',
-                                    //fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                            ],
-                          )
-                        );
-                      })
-                      .toList(),
-                      //hint: Text('Sort By'),
-                  ),
-                ),
-              ],
+                  Divider(height: 1, color: Colors.black,),
+                ]
+              )
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate((BuildContext context, int index){
