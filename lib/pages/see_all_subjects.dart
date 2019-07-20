@@ -207,43 +207,53 @@ class _SeeAllSubjects extends State<SeeAllSubjects>{
   Widget _indivNotifications(dp, subjects, prof){
     if(dp != ""){
       return Container(
-      padding: EdgeInsets.all(15.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      padding: EdgeInsets.only(top: 15.0, left: 15.0, right: 15.0),
+      child: Column(
         children: <Widget>[
-          new CircleAvatar(
-            backgroundImage: AssetImage(dp),
-            radius: 25.0,
-          ),
-          SizedBox(width: 10.0,),
-          new Column(
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              new Row(
+              new CircleAvatar(
+                backgroundImage: AssetImage(dp),
+                radius: 25.0,
+              ),
+              SizedBox(width: 10.0,),
+              new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  new Row(
+                    children: <Widget>[
+                      Container(
+                        width: MediaQuery.of(context).size.width/2,
+                        child:Text(
+                          subjects,
+                          style: TextStyle(
+                            color: Color(getColorHexFromStr("#606060")),
+                            fontSize: 23.0,
+                            fontFamily: 'Futura',
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      ),      
+                      SizedBox(width: MediaQuery.of(context).size.width/5,),
+                      new Icon(Icons.more_vert, color: Colors.grey)
+                    ],
+                  ),
                   Text(
-                    subjects,
+                    prof,
                     style: TextStyle(
-                      color: Color(getColorHexFromStr("#606060")),
-                      fontSize: 23.0,
+                      color: Color(getColorHexFromStr("#B8B8B8")),
+                      fontSize: 15.0,
                       fontFamily: 'Futura',
                       fontWeight: FontWeight.bold
                     ),
                   ),
-                  // Replace this later 
-                  new Icon(Icons.more_vert, color: Colors.grey)
                 ],
-              ),
-              Text(
-                prof,
-                style: TextStyle(
-                  color: Color(getColorHexFromStr("#B8B8B8")),
-                  fontSize: 23.0,
-                  fontFamily: 'Futura',
-                  fontWeight: FontWeight.bold
-                ),
               ),
             ],
           ),
+          SizedBox(height: 15.0,),
+          Divider(height:1, color: Colors.black,)
         ],
       )
     );
