@@ -62,7 +62,7 @@ class _Notifications extends State<Notifications>{
         preferredSize: Size.fromHeight(100.0),
         child: AppBar(
           backgroundColor: Color(getColorHexFromStr("#34495E")),
-          //automaticallyImplyLeading: false, // hides leading widget
+          automaticallyImplyLeading: false, // hides leading widget
           flexibleSpace: new Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -105,6 +105,7 @@ class _Notifications extends State<Notifications>{
         )
       ),
       body:
+      // Container(width: 30.0,)
       Container(
         child: CustomScrollView(
           slivers: <Widget>[
@@ -129,103 +130,181 @@ class _Notifications extends State<Notifications>{
   }
   Widget _indivNotifications(dp, name, text, image){
     if(dp != ""){
-      return Container(
-      padding: EdgeInsets.all(15.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        new CircleAvatar(
-          backgroundImage: AssetImage(dp),
-          radius: 25.0,
-        ),
-        SizedBox(width: 10.0,),
-        new Container(
-          height: 45.0,
-          width: MediaQuery.of(context).size.width/1.8,
-          //decoration: BoxDecoration(border: Border.all(color: Colors.cyan)),
-          child: RichText(
-            text: new TextSpan(
-              // Note: Styles for TextSpans must be explicitly defined.
-              // Child text spans will inherit styles from parent
-              style: new TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
+      if(image != ""){
+        return Container(
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              new CircleAvatar(
+                backgroundImage: AssetImage(dp),
+                radius: 25.0,
               ),
-              children: <TextSpan>[
-                new TextSpan(text: name, style: new TextStyle(fontWeight: FontWeight.bold)),
-                new TextSpan(text: " "),
-                new TextSpan(text: text),
-                //new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
-              ],
+              SizedBox(width: 10.0,),
+              new Container(
+                height: 45.0,
+                width: MediaQuery.of(context).size.width/1.8,
+                //decoration: BoxDecoration(border: Border.all(color: Colors.cyan)),
+                child: RichText(
+                  text: new TextSpan(
+                    // Note: Styles for TextSpans must be explicitly defined.
+                    // Child text spans will inherit styles from parent
+                    style: new TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                  children: <TextSpan>[
+                    new TextSpan(text: name, style: new TextStyle(fontWeight: FontWeight.bold)),
+                    new TextSpan(text: " "),
+                    new TextSpan(text: text),
+                    //new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width/20,),
+            Container(
+            height: 60.0,
+            width: MediaQuery.of(context).size.width/7,
+            decoration: new BoxDecoration(
+              image: DecorationImage(
+                image: new AssetImage(image),
+                fit: BoxFit.fitHeight,
+              ),
+              color: Colors.black,
+              shape: BoxShape.rectangle,
             ),
           ),
-        ),
-        SizedBox(width: MediaQuery.of(context).size.width/20,),
-        Container(
-          height: 60.0,
-          width: MediaQuery.of(context).size.width/7,
-          decoration: new BoxDecoration(
-            image: DecorationImage(
-              image: new AssetImage(image),
-              fit: BoxFit.fill,
-            ),
-            shape: BoxShape.rectangle,
-          ),
-        ),
-      ],
-    )
-    );
+        ],
+      )
+      );
     }
     else{
       return Container(
-      padding: EdgeInsets.all(15.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        new CircleAvatar(
-          // backgroundImage: AssetImage(dp),
-          backgroundColor: Colors.blue,
-          radius: 25.0,
-        ),
-        SizedBox(width: 10.0,),
-        new Container(
-          height: 45.0,
-          width: MediaQuery.of(context).size.width/1.8,
-          //decoration: BoxDecoration(border: Border.all(color: Colors.cyan)),
-          child: RichText(
-            text: new TextSpan(
-              // Note: Styles for TextSpans must be explicitly defined.
-              // Child text spans will inherit styles from parent
-              style: new TextStyle(
-                fontSize: 14.0,
-                color: Colors.black,
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              new CircleAvatar(
+                backgroundImage: AssetImage(dp),
+                radius: 25.0,
               ),
-              children: <TextSpan>[
-                new TextSpan(text: name, style: new TextStyle(fontWeight: FontWeight.bold)),
-                new TextSpan(text: " "),
-                new TextSpan(text: text),
-                //new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
-              ],
+              SizedBox(width: 10.0,),
+              new Container(
+                height: 45.0,
+                width: MediaQuery.of(context).size.width/1.8,
+                //decoration: BoxDecoration(border: Border.all(color: Colors.cyan)),
+                child: RichText(
+                  text: new TextSpan(
+                    // Note: Styles for TextSpans must be explicitly defined.
+                    // Child text spans will inherit styles from parent
+                    style: new TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                  children: <TextSpan>[
+                    new TextSpan(text: name, style: new TextStyle(fontWeight: FontWeight.bold)),
+                    new TextSpan(text: " "),
+                    new TextSpan(text: text),
+                    //new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )
+      );
+    }    
+  }
+  else{
+    if(image != ""){
+        return Container(
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              new CircleAvatar(
+                // backgroundImage: AssetImage(dp),
+                backgroundColor: Colors.blue,
+                radius: 25.0,
+              ),
+              SizedBox(width: 10.0,),
+              new Container(
+                height: 45.0,
+                width: MediaQuery.of(context).size.width/1.8,
+                //decoration: BoxDecoration(border: Border.all(color: Colors.cyan)),
+                child: RichText(
+                  text: new TextSpan(
+                    // Note: Styles for TextSpans must be explicitly defined.
+                    // Child text spans will inherit styles from parent
+                    style: new TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                  children: <TextSpan>[
+                    new TextSpan(text: name, style: new TextStyle(fontWeight: FontWeight.bold)),
+                    new TextSpan(text: " "),
+                    new TextSpan(text: text),
+                    //new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(width: MediaQuery.of(context).size.width/20,),
+            Container(
+            height: 60.0,
+            width: MediaQuery.of(context).size.width/7,
+            decoration: new BoxDecoration(
+              image: DecorationImage(
+                image: new AssetImage(image),
+                fit: BoxFit.fitHeight,
+              ),
+              color: Colors.black,
+              shape: BoxShape.rectangle,
             ),
           ),
-        ),
-        SizedBox(width: MediaQuery.of(context).size.width/20,),
-        Container(
-          height: 60.0,
-          width: MediaQuery.of(context).size.width/7,
-          decoration: new BoxDecoration(
-            image: DecorationImage(
-              image: new AssetImage(image),
-              fit: BoxFit.fill,
-            ),
-            shape: BoxShape.rectangle,
-          ),
-        ),
-      ],
-    )
-    );
+        ],
+      )
+      );
     }
-    
+    else{
+      return Container(
+          padding: EdgeInsets.all(15.0),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              new CircleAvatar(
+                // backgroundImage: AssetImage(dp),
+                backgroundColor: Colors.blue,
+                radius: 25.0,
+              ),
+              SizedBox(width: 10.0,),
+              new Container(
+                height: 45.0,
+                width: MediaQuery.of(context).size.width/1.8,
+                //decoration: BoxDecoration(border: Border.all(color: Colors.cyan)),
+                child: RichText(
+                  text: new TextSpan(
+                    // Note: Styles for TextSpans must be explicitly defined.
+                    // Child text spans will inherit styles from parent
+                    style: new TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                  children: <TextSpan>[
+                    new TextSpan(text: name, style: new TextStyle(fontWeight: FontWeight.bold)),
+                    new TextSpan(text: " "),
+                    new TextSpan(text: text),
+                    //new TextSpan(text: 'World', style: new TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        )
+      );
+    }   
+    }
   }
 }
 
