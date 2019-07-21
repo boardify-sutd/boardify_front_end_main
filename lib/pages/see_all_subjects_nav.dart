@@ -42,7 +42,7 @@ class _SeeAllSubNav extends State<SeeAllSubNav>{
       case 3:
         return Board();//Pagefour();
       case 4:
-        return SeeAllSubNav(widget.pageText);
+        return SeeAllSubjects();
         break;
     }
   }
@@ -96,8 +96,8 @@ class _SeeAllSubNav extends State<SeeAllSubNav>{
                   title: Text('Starred')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
-                  icon: Icon(Icons.email),
-                  title: Text('Messages')
+                  icon: Icon(Icons.notifications),
+                  title: Text('Notifications')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
                   icon: Icon(Icons.person),

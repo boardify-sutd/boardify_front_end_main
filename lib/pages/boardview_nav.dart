@@ -88,8 +88,8 @@ class _BoardviewNav extends State<BoardviewNav>{
                   title: Text('Starred')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
-                  icon: Icon(Icons.email),
-                  title: Text('Messages')
+                  icon: Icon(Icons.notifications),
+                  title: Text('Notifications')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
                   icon: Icon(Icons.person),

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import './my_profile_page.dart';
 import './board.dart';
 
-class Boardview extends StatefulWidget{
+class StarView extends StatefulWidget{
   @override
-  _Boardview createState() => _Boardview();
+  _StarView createState() => _StarView();
 }
 
-class _Boardview extends State<Boardview>{
+class _StarView extends State<StarView>{
 
   Choice _selectedChoice = choices[0]; // The app's "state".
 
@@ -76,14 +76,9 @@ class _Boardview extends State<Boardview>{
               children: <Widget>[
                 SizedBox(height:20.0),
                 Row(
-                  children: <Widget>[
-                    IconButton(
-                      icon: Icon(Icons.clear, color: Colors.grey),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),  
-                    const Text('Cohort 1',
+                  children: <Widget>[  
+                    SizedBox(width: MediaQuery.of(context).size.width/25),
+                    const Text('Starred',
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 30.0,

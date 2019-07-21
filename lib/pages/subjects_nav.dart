@@ -1,10 +1,11 @@
+import 'package:boardify_main/pages/my_profile_page.dart';
 import 'package:flutter/material.dart';
 import './week.dart'; 
 import './page1.dart';
 import './page2.dart';
 import './notifications.dart';
 import './page4.dart';
-import './board.dart';
+import './my_profile_page.dart';
 import './subjects.dart';
 
 class SubjectsNav extends StatefulWidget{
@@ -31,9 +32,9 @@ class _SubjectsNav extends State<SubjectsNav>{
       case 1:
         return Pagetwo();
       case 2:
-        return Pagetwo();
+        return Notifications();
       case 3:
-        return Board();//Pagefour();
+        return ProfilePage("glenn");//Pagefour();
       case 4:
         return Subjects();
         break;
@@ -89,8 +90,8 @@ class _SubjectsNav extends State<SubjectsNav>{
                   title: Text('Starred')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
-                  icon: Icon(Icons.email),
-                  title: Text('Messages')
+                  icon: Icon(Icons.notifications),
+                  title: Text('Notifications')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
                   icon: Icon(Icons.person),

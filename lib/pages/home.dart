@@ -8,6 +8,7 @@ import './board.dart';
 import './subjects.dart';
 import './week.dart'; 
 import './see_all_subjects.dart';
+import './star_view.dart';
 
 
 class HomePage extends StatefulWidget{
@@ -53,11 +54,11 @@ class _HomePageState extends State<HomePage>{
       case 0:
         return Pageone();
       case 1:
-        return Pagetwo();
+        return StarView();
       case 2:
         return Notifications();
       case 3:
-        return SeeAllSubjects();//Board();//Pagefour();
+        return ProfilePage("profile");//SeeAllSubjects();//Board();//Pagefour();
         break;
       default:
         return Pageone();
@@ -244,8 +245,8 @@ class _HomePageState extends State<HomePage>{
                   title: Text('Starred')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
-                  icon: Icon(Icons.email),
-                  title: Text('Messages')
+                  icon: Icon(Icons.notifications),
+                  title: Text('Notifications')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
                   icon: Icon(Icons.person),

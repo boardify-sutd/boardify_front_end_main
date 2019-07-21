@@ -1,33 +1,27 @@
+import 'package:boardify_main/pages/my_profile_page.dart';
 import 'package:flutter/material.dart';
-import './week.dart'; 
+import './boardview.dart'; 
 import './page1.dart';
 import './page2.dart';
 import './notifications.dart';
-import './page4.dart';
-import './board.dart';
-import './my_profile_page.dart';
+import './recently_viewed.dart';
 
-class ProfilePageNav extends StatefulWidget{
 
-  final String pageText;
-
-  //const ProfilePage({Key key, this.pageText}): super(key: key);
-  ProfilePageNav(this.pageText, {Key key}): super(key: key);
-
+class RecentlyViewNav extends StatefulWidget{
   @override
-  _ProfilePageNav createState() => _ProfilePageNav();
+  _RecentlyViewNav createState() => _RecentlyViewNav();
 
   // final String pageText;
 
-  // const Subjects({Key key, this.pageText}): super(key: key);
+  // const Board({Key key, this.pageText}): super(key: key);
 
 }
 
-class _ProfilePageNav extends State<ProfilePageNav>{
+class _RecentlyViewNav extends State<RecentlyViewNav>{
 
 
 
-  // _Subjects(this.pageText);
+  // _Board(this.pageText);
   int _currentIndex = 0;
   int _currentIndexPage = 4;
   Widget callPage(int currentIndex){
@@ -39,9 +33,9 @@ class _ProfilePageNav extends State<ProfilePageNav>{
       case 2:
         return Notifications();
       case 3:
-        return ProfilePage(widget.pageText);//Pagefour();
+        return ProfilePage("profile");//Pagefour();
       case 4:
-        return ProfilePage(widget.pageText);
+        return RecentlyView();
         break;
     }
   }

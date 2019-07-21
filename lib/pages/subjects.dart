@@ -183,8 +183,8 @@ class _Subjects extends State<Subjects>{
       //             title: Text('Starred')
       //         ),  // BottomNavigationBarItem
       //         BottomNavigationBarItem(
-      //             icon: Icon(Icons.email),
-      //             title: Text('Messages')
+      //             icon: Icon(Icons.notifications),
+      //             title: Text('Notifications')
       //         ),  // BottomNavigationBarItem
       //         BottomNavigationBarItem(
       //             icon: Icon(Icons.person),

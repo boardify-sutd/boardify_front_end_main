@@ -89,8 +89,8 @@ class _WeekNav extends State<WeekNav>{
                   title: Text('Starred')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
-                  icon: Icon(Icons.email),
-                  title: Text('Messages')
+                  icon: Icon(Icons.notifications),
+                  title: Text('Notifications')
               ),  // BottomNavigationBarItem
               BottomNavigationBarItem(
                   icon: Icon(Icons.person),
