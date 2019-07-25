@@ -1,9 +1,11 @@
+import 'package:boardify_main/pages/leaderboard_nav.dart';
 import 'package:boardify_main/pages/my_profile_page_nav.dart';
 import 'package:flutter/material.dart';
 import './my_profile_page.dart';
 import './subjects.dart';
 import './subjects_nav.dart';
 import './see_all_subjects_nav.dart';
+import './leaderboard_nav.dart';
 
 class Pageone extends StatefulWidget{
   @override
@@ -169,7 +171,7 @@ drawer: new Drawer(
               new Divider(),
               _buildTile("My Profile","Profile"),
               _buildTile("Notifications","Notifications"),
-              _buildTile("Leaderboard","Leaderboard"),
+              _buildTileLeader("Leaderboard","Leaderboard"),
               _buildTile("Recents","Recents"),
               _buildTile("Starred","Starred"),
               _buildTile("Settings","Settings"),
@@ -297,6 +299,20 @@ drawer: new Drawer(
       onTap: () => Navigator.of(context).push(new MaterialPageRoute
         (builder: (BuildContext context) =>
       new ProfilePageNav(newPage)))
+    );// ListTile
+  }  
+   Widget _buildTileLeader(textLabel, newPage){
+    return new ListTile(
+      dense: true,
+      title: new Text(textLabel,
+        style: TextStyle(
+          color: Color(getColorHexFromStr("#606060")),
+          fontFamily: 'QuickSand',),
+      ),
+      contentPadding: EdgeInsets.only(left: 30.0),
+      onTap: () => Navigator.of(context).push(new MaterialPageRoute
+        (builder: (BuildContext context) =>
+      new LeaderboardNav(newPage)))
     );// ListTile
   }  
   Widget _buildCard(BuildContext context, firstText, subText, imagePath){
