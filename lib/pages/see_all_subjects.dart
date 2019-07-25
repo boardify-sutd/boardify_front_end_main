@@ -1,6 +1,7 @@
 import 'package:boardify_main/pages/boardview_nav.dart';
 import 'package:flutter/material.dart';
 import './boardview_nav.dart';
+import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 
 class SeeAllSubjects extends StatefulWidget{
   @override
@@ -61,6 +62,7 @@ class _SeeAllSubjects extends State<SeeAllSubjects>{
       resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
+        
         preferredSize: Size.fromHeight(100.0),
         child: AppBar(
           backgroundColor: Color(getColorHexFromStr("#34495E")),
@@ -105,42 +107,59 @@ class _SeeAllSubjects extends State<SeeAllSubjects>{
                       },
                     ),
                   ],
-                ),                
+                ), 
               ],
             ),  
           ),
         )
       ),
-      body:
-      Container(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverList(
-              delegate: SliverChildListDelegate(
-                [
-                  Row(
-                    children: <Widget>[
-                      SizedBox(
-                        width: 80.0,
-                        height: 50.0,
-                        child: Switch(
-                          value: isSwitched,
-                          onChanged: (value) {
-                            setState(() {
-                              isSwitched = value;
-                            });
-                          },
-                          activeTrackColor: Colors.blueGrey, 
-                          activeColor: Colors.blue,
-                          activeThumbImage: Image.asset(
-                              'assets/focused.png'
-                          ).image,
-                          inactiveThumbImage: Image.asset(
-                              'assets/all.png'
-                          ).image,
+      body: DefaultTabController(
+        length: 2,
+        child: new Column(
+            children: <Widget>[
+              new Row(
+                children: <Widget>[
+                  Container(
+                    constraints: BoxConstraints(maxHeight: 50.0),
+                    child: Align (
+                      alignment: Alignment.centerLeft,
+                      child: Material(
+                      color: Colors.white,
+                        child: new TabBar(
+                          isScrollable: true,
+                          labelColor: Colors.white,
+                          indicatorColor: Colors.grey,
+                          unselectedLabelColor: Colors.grey,
+                          labelPadding: EdgeInsets.only(right: 10.0, left: 10.0),
+                          indicatorSize: TabBarIndicatorSize.label,
+                          indicator: new BubbleTabIndicator(
+                            indicatorHeight: 25.0,
+                            indicatorColor: Colors.blueAccent,
+                            tabBarIndicatorSize: TabBarIndicatorSize.label,
+                          ),
+                          tabs: [
+                            Tab(icon: Text("     All     ",
+                              style: TextStyle(
+                                //color: Colors.grey,
+                                fontSize: 15.0,
+                                fontFamily: 'Futura',
+                              ),
+                              )
+                            ),
+                            Tab(icon: Text("Focused",
+                              style: TextStyle(
+                                //color: Colors.grey,
+                                fontSize: 15.0,
+                                fontFamily: 'Futura',
+                              ),
+                              )
+                            ),
+                          ],
                         ),
                       ),
-                      SizedBox(width: MediaQuery.of(context).size.width/2),
+                    ),
+                  ),
+                   SizedBox(width: MediaQuery.of(context).size.width/2.5),
                       new Container(
                         margin: new EdgeInsets.only(top: 2.0),
                         decoration: new BoxDecoration(
@@ -176,33 +195,42 @@ class _SeeAllSubjects extends State<SeeAllSubjects>{
                               );
                             })
                             .toList(),
-                            //hint: Text('Sort By'),
                         ),
                       ),
-                    ],
-                  ),
-                  Divider(height: 1, color: Colors.black,),
-                ]
-              )
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate((BuildContext context, int index){
-                return _indivNotifications(sub_ls[index][0], sub_ls[index][1], sub_ls[index][2]);
-              },
-              childCount: sub_ls.length,
-                // [
-                //   ListView.builder(
-                //     itemCount: notif_ls.length,
-                //     itemBuilder: (context, index){
-                //     },
-                //   ),
-                // ]
+                  Divider(height: 1, color: Colors.black,),////////
+                ], ///// ROWWWWWW
               ),
-            )
-          ],
-        ),
-      )
+              new Expanded(child: TabBarView(
+            children: [
+              CustomScrollView(
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate((BuildContext context, int index){
+                      return _indivNotifications(sub_ls[index][0], sub_ls[index][1], sub_ls[index][2]);
+                    },
+                    childCount: sub_ls.length,
+                      // [
+                      //   ListView.builder(
+                      //     itemCount: notif_ls.length,
+                      //     itemBuilder: (context, index){
+                      //     },
+                      //   ),
+                      // ]
+                    ),
+                  )
+                ],
+              ),
+              //Icon(Icons.directions_car),
+              Icon(Icons.directions_transit),
+            ],
+          )
+          )
+            ],
+        )
+      
+      ),
     );
+    
   }
   Widget _indivNotifications(dp, subjects, prof){
     if(dp != ""){
