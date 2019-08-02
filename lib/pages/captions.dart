@@ -197,7 +197,7 @@ class _Captions extends State<Captions>{
         Text(likeCount.toString()),
         IconButton(
             icon: (notif_ls[index][6]  ? 
-            Icon(Icons.details,color: Colors.blue[500],) : Icon(Icons.details)),
+            Icon(Icons.details,color: Colors.red[500],) : Icon(Icons.details)),
             onPressed: _toggleDislike,
         ),
         Text(dislikeCount.toString()),
@@ -258,7 +258,7 @@ class _Captions extends State<Captions>{
         Text(likeCount.toString()),
         IconButton(
             icon: (notif_ls[index][6]  ? 
-            Icon(Icons.details,color: Colors.blue[500],) : Icon(Icons.details)),
+            Icon(Icons.details,color: Colors.red[500],) : Icon(Icons.details)),
             onPressed: _toggleDislike,
         ),
         Text(dislikeCount.toString()),
