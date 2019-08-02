@@ -12,9 +12,9 @@ class Captions extends StatefulWidget{
 
 class _Captions extends State<Captions>{
 
-  List notif_ls = [["assets/medal.png", "Introduction to Electricity and Magnetism", "by pencillead", 201, 1], 
-                    ["", "Electromagnetism", "by edafruit", 188, 8],
-                    ["", "Electromagnetism", "by lewlian", 190, 4],
+  List notif_ls = [["assets/medal.png", "Introduction to Electricity and Magnetism", "by pencillead", 201, false, 1, true], 
+                    ["", "Electromagnetism", "by edafruit", 188, true, 8, false],
+                    ["", "Electromagnetism", "by lewlian", 190, false, 4, true],
                     ];
   // final String pageText;
 
@@ -54,7 +54,7 @@ class _Captions extends State<Captions>{
               child: new ListView.builder(
                 itemCount: notif_ls.length,
                 itemBuilder: (BuildContext ctxt, int index){
-                  return _indivCaptions(notif_ls[index][0], notif_ls[index][1], notif_ls[index][2], notif_ls[index][3], notif_ls[index][4], index);
+                  return _indivCaptions(notif_ls[index][0], notif_ls[index][1], notif_ls[index][2], notif_ls[index][3], notif_ls[index][4], notif_ls[index][5], notif_ls[index][6], index);
                 },
               )
             ),
@@ -119,14 +119,27 @@ class _Captions extends State<Captions>{
     );
   }
   
-  Widget _indivCaptions(medal, caption, author, likeCount, dislikeCount, index){
+  Widget _indivCaptions(medal, caption, author, likeCount, likeState, dislikeCount, dislikeState, index){
 
-    void _toggleFavorite() {
+    void _toggleLike() {
       setState(() {
-        if (notif_ls[index][3]) {
-          notif_ls[index][3] = false;
+        if (notif_ls[index][4]) {
+          notif_ls[index][4] = false;
+          notif_ls[index][3] = notif_ls[index][3] - 1;
         } else {
-          notif_ls[index][3] = true;
+          notif_ls[index][4] = true;
+          notif_ls[index][3] = notif_ls[index][3] + 1;
+        }
+      });
+    }
+    void _toggleDislike() {
+      setState(() {
+        if (notif_ls[index][6]) {
+          notif_ls[index][6] = false;
+          notif_ls[index][5] = notif_ls[index][5] - 1;
+        } else {
+          notif_ls[index][6] = true;
+          notif_ls[index][5] = notif_ls[index][5] + 1;
         }
       });
     }
@@ -177,17 +190,15 @@ class _Captions extends State<Captions>{
         ),
         //SizedBox(width: MediaQuery.of(context).size.width/50,),
         IconButton(
-            // icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
-            // color: Colors.red[500],
-            // onPressed: _toggleFavorite,
-            icon: Icon(Icons.change_history)
+            icon: (notif_ls[index][4]  ? 
+            Icon(Icons.change_history,color: Colors.blue[500],) : Icon(Icons.change_history)),
+            onPressed: _toggleLike,
         ),
         Text(likeCount.toString()),
         IconButton(
-            // icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
-            // color: Colors.red[500],
-            // onPressed: _toggleFavorite,
-            icon: Icon(Icons.details)
+            icon: (notif_ls[index][6]  ? 
+            Icon(Icons.details,color: Colors.blue[500],) : Icon(Icons.details)),
+            onPressed: _toggleDislike,
         ),
         Text(dislikeCount.toString()),
       ],
@@ -240,17 +251,15 @@ class _Captions extends State<Captions>{
         ),
         //SizedBox(width: MediaQuery.of(context).size.width/50,),
         IconButton(
-            // icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
-            // color: Colors.red[500],
-            // onPressed: _toggleFavorite,
-            icon: Icon(Icons.change_history)
+            icon: (notif_ls[index][4]  ? 
+            Icon(Icons.change_history,color: Colors.blue[500],) : Icon(Icons.change_history)),
+            onPressed: _toggleLike,
         ),
         Text(likeCount.toString()),
         IconButton(
-            // icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
-            // color: Colors.red[500],
-            // onPressed: _toggleFavorite,
-            icon: Icon(Icons.details)
+            icon: (notif_ls[index][6]  ? 
+            Icon(Icons.details,color: Colors.blue[500],) : Icon(Icons.details)),
+            onPressed: _toggleDislike,
         ),
         Text(dislikeCount.toString()),
       ],
