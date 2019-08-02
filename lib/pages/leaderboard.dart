@@ -17,9 +17,9 @@ class _Leaderboard extends State<Leaderboard>{
 
   Choice _selectedChoice = choices[0]; // The app's "state".
   List<String> litems = ["Cohort 1", "Cohort 2", "Lecture"];
-  List sub_ls = [["1", "assets/physics.png", "pencillead", "190", "3"], 
-                    ["2","assets/bio.jpg", "xiao", "190", "3"],
-                    ["3","assets/math.jpg", "zhao", "190", "3"],
+  List sub_ls = [["1", "assets/physics.png", "pencillead", 190, false, 3, true], 
+                    ["2","assets/bio.jpg", "xiao", 190, true, 3, false],
+                    ["3","assets/math.jpg", "zhao", 190, false, 3, true],
                     ];
   bool isSwitched = true;
   String dropdownValue = 'Date';
@@ -222,7 +222,7 @@ class _Leaderboard extends State<Leaderboard>{
                 slivers: <Widget>[
                   SliverList(
                     delegate: SliverChildBuilderDelegate((BuildContext context, int index){
-                      return _leaderboardList(sub_ls[index][0], sub_ls[index][1], sub_ls[index][2],  sub_ls[index][3],  sub_ls[index][4]);
+                      return _leaderboardList(sub_ls[index][0], sub_ls[index][1], sub_ls[index][2],  sub_ls[index][3],  sub_ls[index][4], sub_ls[index][5], sub_ls[index][6], index);
                     },
                     childCount: sub_ls.length,
                       // [
@@ -248,7 +248,30 @@ class _Leaderboard extends State<Leaderboard>{
     );
     
   }
-  Widget _leaderboardList(rank, dp, name, likes, dislikes){
+  Widget _leaderboardList(rank, dp, name, likeCount, likeState, dislikeCount, dislikeState, index){
+    void _toggleLike() {
+      setState(() {
+        if (sub_ls[index][4]) {
+          sub_ls[index][4] = false;
+          sub_ls[index][3] = sub_ls[index][3] - 1;
+        } else {
+          sub_ls[index][4] = true;
+          sub_ls[index][3] = sub_ls[index][3] + 1;
+        }
+      });
+    }
+    void _toggleDislike() {
+      setState(() {
+        if (sub_ls[index][6]) {
+          sub_ls[index][6] = false;
+          sub_ls[index][5] = sub_ls[index][5] - 1;
+        } else {
+          sub_ls[index][6] = true;
+          sub_ls[index][5] = sub_ls[index][5] + 1;
+        }
+      });
+    }
+    
     if(dp != ""){
       return Container(
         padding: EdgeInsets.only(top: 15.0),
@@ -285,25 +308,24 @@ class _Leaderboard extends State<Leaderboard>{
                 ),
                 SizedBox(
                   width: 30.0,
-                  child:  IconButton(
-                    // icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
-                    // color: Colors.red[500],
-                    // onPressed: _toggleFavorite,
-                    icon: Icon(Icons.change_history)
-                  ),
+                  child: IconButton(
+                    icon: (sub_ls[index][4]  ? 
+                      Icon(Icons.change_history,color: Colors.blue[500],) : 
+                      Icon(Icons.change_history)), 
+                      onPressed: _toggleLike,
+                      ),
                 ),
-                Text(likes),//likeCount.toString()),
+                Text(likeCount.toString()),
                 SizedBox(
                   width: 30.0,
                   child: 
                   IconButton(
-                      // icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
-                      // color: Colors.red[500],
-                      // onPressed: _toggleFavorite,
-                      icon: Icon(Icons.details)
-                  ),
+                    icon: (sub_ls[index][6]  ? 
+                    Icon(Icons.details,color: Colors.red[500],) : Icon(Icons.details)),
+                    onPressed: _toggleDislike,
+                ),
                 ),                    
-                Text(dislikes)//dislikeCount.toString()),
+                Text(dislikeCount.toString()),
               ],
             ),
             SizedBox(height: 15.0,),
