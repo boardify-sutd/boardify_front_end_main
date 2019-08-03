@@ -21,10 +21,16 @@ dependencies:
     sdk: flutter
   dio: 1.0.0
   bubble_tab_indicator: "^0.1.4"
+  loader_search_bar: ^1.0.3+3
 
+  shared_preferences: "^0.5.3"
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  dots_indicator: ^0.0.4
+  http: ^0.12.0
+  intro_views_flutter:
+    git: git://github.com/aagarwal1012/IntroViews-Flutter
 
 dev_dependencies:
   flutter_test:

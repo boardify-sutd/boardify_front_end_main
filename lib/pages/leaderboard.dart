@@ -370,25 +370,24 @@ class _Leaderboard extends State<Leaderboard>{
                 ),
                 SizedBox(
                   width: 30.0,
-                  child:  IconButton(
-                    // icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
-                    // color: Colors.red[500],
-                    // onPressed: _toggleFavorite,
-                    icon: Icon(Icons.change_history)
-                  ),
+                  child: IconButton(
+                    icon: (sub_ls[index][4]  ? 
+                      Icon(Icons.change_history,color: Colors.blue[500],) : 
+                      Icon(Icons.change_history)), 
+                      onPressed: _toggleLike,
+                      ),
                 ),
-                Text(likes),//likeCount.toString()),
+                Text(likeCount.toString()),
                 SizedBox(
                   width: 30.0,
                   child: 
                   IconButton(
-                      // icon: (notif_ls[index][3]  ? Icon(Icons.favorite) : Icon(Icons.favorite_border)),
-                      // color: Colors.red[500],
-                      // onPressed: _toggleFavorite,
-                      icon: Icon(Icons.details)
-                  ),
+                    icon: (sub_ls[index][6]  ? 
+                    Icon(Icons.details,color: Colors.red[500],) : Icon(Icons.details)),
+                    onPressed: _toggleDislike,
+                ),
                 ),                    
-                Text(dislikes)//dislikeCount.toString()),
+                Text(dislikeCount.toString()),
               ],
             ),
             SizedBox(height: 15.0,),
