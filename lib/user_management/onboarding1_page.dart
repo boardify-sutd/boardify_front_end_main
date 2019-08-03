@@ -9,7 +9,7 @@ class OnBoardingPage1 extends StatelessWidget {
     PageViewModel(
         pageColor: const Color(0xFF03A9F4),
         // iconImageAssetPath: 'assets/air-hostess.png',
-        bubble: Image.asset('assets/user_management/student.png'),
+        bubble: Image.asset('assets/student.png'),
         body: Text(
           'New whiteboards are updated immediately in real-time!',
         ),
@@ -18,20 +18,20 @@ class OnBoardingPage1 extends StatelessWidget {
         ),
         textStyle: TextStyle(fontFamily: 'Futura', color: Colors.white),
         mainImage: Image.asset(
-          'assets/user_management/hourglass.png',
+          'assets/hourglass.png',
           height: 285.0,
           width: 285.0,
           alignment: Alignment.center,
         )),
     PageViewModel(
       pageColor: const Color(0xFF8BC34A),
-      iconImageAssetPath: 'assets/user_management/student-2.png',
+      iconImageAssetPath: 'assets/student-2.png',
       body: Text(
         'Whiteboards are sorted automatically by classes for you!',
       ),
       title: Text('Stay Organized'),
       mainImage: Image.asset(
-        'assets/user_management/folder.png',
+        'assets/folder.png',
         height: 285.0,
         width: 285.0,
         alignment: Alignment.center,
@@ -46,7 +46,7 @@ class OnBoardingPage1 extends StatelessWidget {
       ),
       title: Text('Quick Search'),
       mainImage: Image.asset(
-        'assets/user_management/paint.png',
+        'assets/paint.png',
         height: 285.0,
         width: 285.0,
         alignment: Alignment.center,
